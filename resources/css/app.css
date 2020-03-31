@@ -1,0 +1,20 @@
+@tailwind base;
+
+@tailwind components;
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.footer {
+	background-image: url('../images/bg-footer.png');
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.hero-section-h {
+    height: 550px;
+}
+
+@tailwind utilities;
