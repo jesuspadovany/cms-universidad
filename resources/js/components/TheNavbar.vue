@@ -36,14 +36,8 @@
 import { debounce } from 'lodash';
 import { ref, watch } from '@vue/composition-api';
 import { useUrlGenerator } from '@/composables/useUrlGenerator';
-import SearchInput from '@/components/SearchInput';
-import ExpandableMenu from '@/components/ExpandableMenu';
 
 export default {
-  components: {
-    SearchInput,
-    ExpandableMenu
-  },
   setup() {
     const { searchTerm } = useNavbarSearch();
     const url = useUrlGenerator();

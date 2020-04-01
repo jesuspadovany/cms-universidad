@@ -21,7 +21,7 @@
         <the-navbar></the-navbar>
 
         {{-- Slider --}}
-        <div class="hero-section-h bg-blue-500 flex items-center justify-center">
+        <div class="hero-section-h relative bg-blue-500">
             @yield('header')
         </div>
 

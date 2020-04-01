@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-	Acá el slider
+	<main-slider></main-slider>
 @endsection
 
 @section('content')
@@ -69,16 +69,16 @@
 		</div>
 
 		<div class="mt-12 mb-6 text-3xl text-center text-white">
-			<a href="#">Arte</a> | 
+			<a href="#">Arte</a> |
 			<a href="#">Música</a> |
 			<a href="#">Teatro</a> |
 			<a href="#">Pintura</a> |
-			<a href="#">Fotografía</a> | 
+			<a href="#">Fotografía</a> |
 			<a href="#">Escritura</a> |
 			<a href="#">Cine</a> |
 			<a href="#">Diseño</a>
 		</div>
-	</div>		
+	</div>
 </section>
 
 {{-- Sección de biblioteca --}}
