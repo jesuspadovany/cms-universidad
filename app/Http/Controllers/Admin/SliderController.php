@@ -29,4 +29,16 @@ class SliderController extends Controller
 
         return redirect()->route('admin.slider.index');
     }
+
+    public function delete(Slide $slide)
+    {
+        // TODO: Eliminar la imagen
+
+        $slide->delete();
+
+        return back()->with('alert', [
+            'type' => 'success',
+            'message' => 'La imagen ha sido eliminada'
+        ]);
+    }
 }
