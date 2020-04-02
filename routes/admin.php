@@ -9,6 +9,7 @@ Route::view('/', 'admin.layouts.master');
 Route::prefix('/slider')->name('slider.')->group(function() {
 	Route::get('/', [SliderController::class, 'index'])->name('index');
     Route::get('/crear', [SliderController::class, 'create'])->name('create');
+    Route::post('/crear', [SliderController::class, 'store']);
 });
 
 Route::prefix('/agenda')->name('schedule.')->group(function() {

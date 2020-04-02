@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-	<main-slider></main-slider>
+	<main-slider :slides='@json($slides)'></main-slider>
 @endsection
 
 @section('content')

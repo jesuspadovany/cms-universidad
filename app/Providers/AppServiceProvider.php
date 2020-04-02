@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Slide;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(['admin.slider.index', 'admin.slider.create'], function($view) {
+            $view->with('slides', Slide::orderBy('position')->get());
+        });
     }
 }

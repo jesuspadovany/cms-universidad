@@ -5,12 +5,18 @@
 @section('content')
 <div class="p-4">
 	<div class="flex flex-wrap">
-		@foreach (range(1, 8) as $i)
+		@foreach ($slides as $slide)
 			<div class="w-1/4 p-2">
-				<img src="https://via.placeholder.com/340x150" class="block w-full h-40">
+				<img src="{{ asset($slide->image) }}" class="block w-full h-40">
 			</div>
 		@endforeach
 	</div>
+
+    <div class="p-2 text-right">
+        <a href="{{ route('admin.slider.create') }}" class="inline-block px-4 py-2 rounded-lg bg-primary font-semibold text-white">
+            Agregar +
+        </a>
+    </div>
 
 	<div class="px-2 my-2">
 		<div class="h-6 bg-primary"></div>
@@ -35,12 +41,6 @@
 					- Modificar posición
 				</li>
 			</ul>
-
-			<div class="text-right">
-				<a href="{{ route('admin.slider.create') }}" class="inline-block px-4 py-2 rounded-lg bg-primary font-semibold text-white">
-					Agregar +
-				</a>
-			</div>
 		</div>
 	</div>
 </div>

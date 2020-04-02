@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="absolute inset-0"
-  >
+  <div class="absolute inset-0">
     <div
       class="slider-image absolute h-full w-full"
       v-for="(slide, i) in slidesToDisplay"
@@ -29,30 +27,26 @@
 </template>
 
 <script>
+import { useUrlGenerator } from '@/composables/useUrlGenerator';
 import { computed } from '@vue/composition-api';
 import { useSlider } from '@/composables/useSlider';
 
 export default {
-  setup() {
-    const {
-      slides,
-      currentSlideIndex,
-      previousSlide,
-      nextSlide
-    } = useSlider([
-      'https://i.pinimg.com/originals/87/22/19/872219e39469e56ff5742581122212bf.jpg',
-      'https://i.pinimg.com/originals/bf/ae/3f/bfae3fa83ae7efd6b7b56c3df0fac9bf.jpg',
-      'https://i.pinimg.com/originals/31/9d/ce/319dce67ea7e656296d9334040a9b991.jpg'
-    ]);
+  props: {
+    slides: Array
+  },
+  setup(props) {
+    const { slides, currentSlideIndex, previousSlide, nextSlide } = useSlider(props.slides);
+    const url = useUrlGenerator();
 
-    function slidesMapper(currentIndex) {
-      return (slide, i) => ({
-        styles: { backgroundImage: `url('${slide}')` },
-        currentSlide: currentIndex === i
-      })
-    }
+    const slidesToDisplay = computed(() => slides.value.map((slide, i) => {
+      const slideUrl = url(slide.image, false);
 
-    const slidesToDisplay = computed(() => slides.value.map(slidesMapper(currentSlideIndex.value)));
+      return {
+        styles: { backgroundImage: `url('${slideUrl}')` },
+        currentSlide: currentSlideIndex.value === i
+      }
+    }));
 
     return {
       previousSlide,
