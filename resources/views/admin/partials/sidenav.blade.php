@@ -1,3 +1,16 @@
+@php
+    function getMenuLinkBgColor(array $routeNames)
+    {
+        foreach ($routeNames as $name) {
+            if (request()->routeIs($name)) {
+                return 'bg-primary';
+            }
+        }
+
+        return '';
+    }
+@endphp
+
 <nav class="flex-shrink-0 w-64 bg-primary-lighter text-white">
 	<h1 class="flex items-center justify-center h-16 bg-primary leading-none font-semibold text-3xl text-white">
 		UBA "ROJAS"
@@ -23,8 +36,9 @@
 				href="{{ route('admin.slider.index') }}"
 				class="
 					flex items-center hover:bg-primary pl-2 pr-3 py-2
-					{{ request()->routeIs('admin.slider.index') || request()->routeIs('admin.slider.create') ? 'bg-primary' : '' }}
+                    {{ getMenuLinkBgColor(['admin.slider.index', 'admin.slider.create']) }}
 				">
+
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-sliders-h fa-lg"></i>
 				</span>
@@ -36,7 +50,7 @@
                 href="{{ route('admin.schedule.index') }}"
                 class="
                     flex items-center hover:bg-primary pl-2 pr-3 py-2
-                    {{ request()->routeIs('admin.schedule.index') || request()->routeIs('admin.schedule.slider') || request()->routeIs('admin.schedule.create') ? 'bg-primary' : '' }}
+                    {{ getMenuLinkBgColor(['admin.schedule.index', 'admin.schedule.slider', 'admin.schedule.create']) }}
                 ">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-calendar-alt fa-lg"></i>
@@ -45,7 +59,13 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+			<a
+                href="{{ route('admin.library.index') }}"
+                class="
+                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    {{ getMenuLinkBgColor(['admin.library.index', 'admin.library.create']) }}
+                "
+            >
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="far fa-calendar-alt"></i>
 				</span>

@@ -2,7 +2,7 @@ import { ref } from '@vue/composition-api';
 
 export function useSlider(incomingSlides) {
   if (!Array.isArray(incomingSlides)) {
-    console.warn('useSlider: You must provide and array');
+    console.warn('useSlider: You must provide an array');
   }
 
   const slides = ref(incomingSlides);

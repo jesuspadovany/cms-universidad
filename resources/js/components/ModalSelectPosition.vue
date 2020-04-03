@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { useRangeFromOneToN } from '@/composables/useRangeFromOneToN';
+
 export default {
   props: {
     amountOfPositions: {
@@ -36,10 +38,6 @@ export default {
       positions
     }
   }
-}
-
-function useRangeFromOneToN(numberOfItems) {
-  return Array.from(Array(numberOfItems + 1).keys()).slice(1);
 }
 </script>
 

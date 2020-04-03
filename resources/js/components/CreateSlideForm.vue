@@ -54,7 +54,10 @@
       </div>
 
       <!-- Posiciones de cada slide -->
-      <div v-for="(slide, i) in slidesPosition">
+      <div
+        v-for="(slide, i) in slidesPosition"
+        :key="slide.id"
+      >
         <input
           type="hidden"
           :name="`slides_positions[${i}][id]`"
