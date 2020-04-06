@@ -24,7 +24,9 @@ class StoreBooksSliderOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'books' => ['required', 'array'],
+            'books.*.id' => ['required', 'exists:books,id'],
+            'books.*.position' => ['required', 'integer'],
         ];
     }
 }

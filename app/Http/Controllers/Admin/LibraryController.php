@@ -54,6 +54,9 @@ class LibraryController extends Controller
                 ->update(['in_slider' => true, 'position' => $book['position']]);
         }
 
-        return back();
+        return back()->with('alert', [
+            'type' => 'success',
+            'message' => 'El slider se guardo correctamente'
+        ]);
     }
 }
