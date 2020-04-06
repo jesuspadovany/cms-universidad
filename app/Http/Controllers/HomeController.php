@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Slide;
 
 class HomeController extends Controller
@@ -9,7 +10,8 @@ class HomeController extends Controller
     public function index()
     {
     	return view('home.index', [
-            'slides' => Slide::orderBy('position')->get()
+            'slides' => Slide::orderBy('position')->get(),
+            'booksInSlider' => Book::getBooksInSlider()
         ]);
     }
 

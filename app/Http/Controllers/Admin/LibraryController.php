@@ -6,12 +6,15 @@ use App\Book;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\StoreBooksSliderOrderRequest;
 
 class LibraryController extends Controller
 {
     public function index()
     {
-        return view("admin.library.index");
+        return view("admin.library.index", [
+            'booksInSlider' => Book::getBooksInSlider()
+        ]);
     }
 
     public function create()
@@ -31,5 +34,26 @@ class LibraryController extends Controller
             'type' => 'success',
             'message' => 'El libro ha sido agregado'
         ]);
+    }
+
+    public function slider()
+    {
+        return view('admin.library.slider', [
+            'booksNotInSlider' => Book::whereInSlider(false)->get(),
+            'booksInSlider' => Book::getBooksInSlider()
+        ]);
+    }
+
+    public function storeBooksSliderOrder(StoreBooksSliderOrderRequest $storeBooksSliderOrderRequest)
+    {
+        Book::whereNotIn('id', request()->books)
+            ->update(['in_slider' => false, 'position' => 0]);
+
+        foreach ($storeBooksSliderOrderRequest->books as $book) {
+            Book::where('id', $book['id'])
+                ->update(['in_slider' => true, 'position' => $book['position']]);
+        }
+
+        return back();
     }
 }

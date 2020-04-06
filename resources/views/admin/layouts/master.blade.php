@@ -21,7 +21,7 @@
 		@include('admin.partials.sidenav')
 
 		{{-- Contenido Principal --}}
-		<section class="w-full min-h-screen">
+		<section class="w-full min-w-0 min-h-screen">
 			{{-- Barra superior --}}
 			<section class="flex items-center h-16 p-4 bg-primary text-white">
 				<button type="button" class="focus:outline-none">

@@ -17,9 +17,11 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->tinyInteger('is_free');
+            $table->boolean('is_free');
             $table->decimal('price', 12, 2);
             $table->string('image');
+            $table->boolean('in_slider')->default(0);
+            $table->integer('position');
             $table->timestamps();
         });
     }

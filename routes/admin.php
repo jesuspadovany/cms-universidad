@@ -24,4 +24,6 @@ Route::prefix('/biblioteca')->name('library.')->group(function() {
     Route::get('/', [LibraryController::class, 'index'])->name('index');
     Route::get('/crear', [LibraryController::class, 'create'])->name('create');
     Route::post('/crear', [LibraryController::class, 'store']);
+    Route::get('/slider', [LibraryController::class, 'slider'])->name('slider');
+    Route::put('/slider', [LibraryController::class, 'storeBooksSliderOrder']);
 });

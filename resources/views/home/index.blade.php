@@ -90,28 +90,11 @@
 		</a>
 	</x-section-title>
 
-	<div class="grid grid-cols-2 grid-rows-2 gap-6">
-		@foreach (range(1, 4) as $i)
-			<div class="bg-gray-300 rounded-lg overflow-hidden">
-				<div class="flex h-40">
-					<div class="flex-shrink-0 flex w-32 bg-gray-400">
-						<img src="https://via.placeholder.com/65x100" class="inline h-32 m-auto shadow-md">
-					</div>
-					<div class="p-4 w-full">
-						<h3 class="text-xl mb-2">Somos nuestro cerebro</h3>
-
-						<p>
-							Capo sinceramente supiera lo que dice aquí lo escribiria pero no tengo ni la mejor idea,
-							si sabes lo que dice por favor escribemelo
-						</p>
-					</div>
-				</div>
-				<div class="flex px-3 py-2 bg-primary font-semibold text-white">
-					<span>Gratis</span>
-					<a href="#" class="ml-auto">Leer</a>
-				</div>
-			</div>
-		@endforeach
-	</div>
+	{{-- Slides --}}
+    <book-slider
+        :items='@json($booksInSlider)'
+        :number-of-cols="2"
+        :number-of-rows="2"
+    ></book-slider>
 </section>
 @endsection

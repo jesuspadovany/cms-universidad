@@ -13,7 +13,8 @@ class Book extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'is_free' => 'boolean'
+        'is_free' => 'boolean',
+        'is_in_slider' => 'boolean'
     ];
 
     //------------------- Relationships -------------------//
@@ -33,5 +34,11 @@ class Book extends Model
     public function setPriceAttribute($price)
     {
         $this->attributes['price'] = is_null($price) ? 0 : $price;
+    }
+
+    //------------------- Static methdos -------------------//
+    public static function getBooksInSlider()
+    {
+        return static::whereInSlider(true)->orderBy('position')->get();
     }
 }
