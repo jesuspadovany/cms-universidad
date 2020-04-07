@@ -63,7 +63,7 @@
                 href="{{ route('admin.library.index') }}"
                 class="
                     flex items-center hover:bg-primary pl-2 pr-3 py-2
-                    {{ getMenuLinkBgColor(['admin.library.index', 'admin.library.create', 'admin.library.slider']) }}
+                    {{ getMenuLinkBgColor(['admin.library.index', 'admin.library.create', 'admin.library.slider', 'admin.library.changePageImage']) }}
                 "
             >
 				<span class="inline-block mr-2 w-10 text-center">

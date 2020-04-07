@@ -1266,6 +1266,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22419,9 +22425,13 @@ var render = function() {
           ? _c("span", [_vm._v("Gratis")])
           : _c("span", [_vm._v(_vm._s(_vm.book.price) + " AR")]),
         _vm._v(" "),
-        _c("a", { staticClass: "ml-auto", attrs: { href: "#" } }, [
-          _vm._v("Leer")
-        ])
+        _vm.book.is_free
+          ? _c("a", { staticClass: "ml-auto", attrs: { href: "#" } }, [
+              _vm._v("\n      Leer\n    ")
+            ])
+          : _c("a", { staticClass: "ml-auto", attrs: { href: "#" } }, [
+              _vm._v("\n      Comparar\n    ")
+            ])
       ]
     )
   ])

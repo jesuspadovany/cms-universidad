@@ -19,7 +19,13 @@
     <div class="flex px-3 py-2 bg-primary font-semibold text-white">
       <span v-if="book.is_free">Gratis</span>
       <span v-else>{{ book.price }} AR</span>
-      <a href="#" class="ml-auto">Leer</a>
+
+      <a href="#" class="ml-auto" v-if="book.is_free">
+        Leer
+      </a>
+      <a href="#" class="ml-auto" v-else>
+        Comparar
+      </a>
     </div>
   </div>
 </template>

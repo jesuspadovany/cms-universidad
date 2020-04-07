@@ -7,13 +7,17 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\StoreBooksSliderOrderRequest;
+use App\Page;
+use Illuminate\Support\Facades\Storage;
 
 class LibraryController extends Controller
 {
     public function index()
     {
         return view("admin.library.index", [
-            'booksInSlider' => Book::getBooksInSlider()
+            'books' => Book::paginate(15),
+            'booksInSlider' => Book::getBooksInSlider(),
+            'page' => Page::where('name', 'biblioteca')->first()
         ]);
     }
 
@@ -36,6 +40,16 @@ class LibraryController extends Controller
         ]);
     }
 
+    public function delete(Book $book)
+    {
+        $book->delete();
+
+        return back()->with('alert', [
+            'type' => 'success',
+            'message' => 'El libro ha sido eliminado'
+        ]);
+    }
+
     public function slider()
     {
         return view('admin.library.slider', [
@@ -46,7 +60,7 @@ class LibraryController extends Controller
 
     public function storeBooksSliderOrder(StoreBooksSliderOrderRequest $storeBooksSliderOrderRequest)
     {
-        Book::whereNotIn('id', request()->books)
+        Book::whereNotIn('id', $storeBooksSliderOrderRequest->books)
             ->update(['in_slider' => false, 'position' => 0]);
 
         foreach ($storeBooksSliderOrderRequest->books as $book) {
@@ -57,6 +71,33 @@ class LibraryController extends Controller
         return back()->with('alert', [
             'type' => 'success',
             'message' => 'El slider se guardo correctamente'
+        ]);
+    }
+
+    public function changePageImage()
+    {
+        return view('admin.library.change-page-image');
+    }
+
+    public function storePageImage()
+    {
+        $data = request()->validate([
+            'image' => ['required', 'image']
+        ], [], [
+            'image' => 'imagen'
+        ]);
+
+        $imagePath = Storage::url($data['image']->store('public/pages'));
+
+        $page = Page::where('name', 'biblioteca')->first();
+
+        $page->image = $imagePath;
+
+        $page->save();
+
+        return redirect()->route('admin.library.index')->with('alert', [
+            'type' => 'success',
+            'message' => 'La imagen ha sido actualizada'
         ]);
     }
 }
