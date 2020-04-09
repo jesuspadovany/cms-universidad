@@ -17,7 +17,9 @@
                 <p class="text-xl">Imagen principal</p>
                 <a href="{{ route('admin.courses.changePageImage') }}" class="px-2 py-1 rounded-md bg-primary font-semibold text-white">Cambiar imagen</a>
             </div>
-            <img src="{{ asset($page->image) }}">
+            @if (! is_null($page))
+                <img src="{{ asset($page->image) }}">
+            @endif
         </div>
         <div class="flex flex-col items-end justify-center w-1/2 text-right">
             <a href="#!" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Agregar curso</a>
