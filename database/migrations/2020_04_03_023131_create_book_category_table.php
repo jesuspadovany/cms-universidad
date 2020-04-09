@@ -17,8 +17,8 @@ class CreateBookCategoryTable extends Migration
             $table->foreignId('book_id');
             $table->foreignId('category_id');
 
-            $table->foreign('book_id')->references('id')->on('books');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

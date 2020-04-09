@@ -1,9 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-<section class="h-full" style="background-image: url('{{ asset($page->image) }}')">
-
-</section>
+<hero-section bg-image="{{ $page->image }}"></hero-section>
 @endsection
 
 @section('content')

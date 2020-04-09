@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Admin\LibraryController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\SliderController;
@@ -29,4 +30,10 @@ Route::prefix('/biblioteca')->name('library.')->group(function() {
     Route::put('/cambiar-imagen', [LibraryController::class, 'storePageImage']);
     Route::get('/slider', [LibraryController::class, 'slider'])->name('slider');
     Route::put('/slider', [LibraryController::class, 'storeBooksSliderOrder']);
+});
+
+Route::prefix('/cursos')->name('courses.')->group(function() {
+    Route::get('/', [CoursesController::class, 'index'])->name('index');
+    Route::get('/cambiar-imagen', [CoursesController::class, 'changePageImage'])->name('changePageImage');
+    Route::put('/cambiar-imagen', [CoursesController::class, 'storePageImage']);
 });

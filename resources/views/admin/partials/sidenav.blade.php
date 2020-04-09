@@ -73,7 +73,13 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+			<a
+                href="{{ route('admin.courses.index') }}"
+                class="
+                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    {{ getMenuLinkBgColor(['admin.courses.index', 'admin.courses.changePageImage']) }}
+                "
+            >
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-cubes fa-lg"></i>
 				</span>
