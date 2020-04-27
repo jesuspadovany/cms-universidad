@@ -38021,7 +38021,7 @@ function useUrlGenerator() {
       return url;
     }
 
-    return "".concat("http://cmsuni.localhost").concat(trailingSlashAfterBase ? '/' : '').concat(url);
+    return "".concat("http://uba.localhost").concat(trailingSlashAfterBase ? '/' : '').concat(url);
   };
 }
 

@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->decimal('price', 12, 2);
             $table->string('image');
             $table->boolean('in_slider')->default(0);
-            $table->integer('position');
+            $table->integer('position')->default(1);
             $table->timestamps();
         });
     }

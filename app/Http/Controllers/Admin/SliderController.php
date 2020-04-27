@@ -10,12 +10,16 @@ class SliderController extends Controller
 {
     public function index()
     {
-    	return view('admin.slider.index');
+    	return view('admin.slider.index', [
+            'slides', Slide::orderBy('position')->get()
+        ]);
     }
 
     public function create()
     {
-        return view('admin.slider.create');
+        return view('admin.slider.create', [
+            'slides', Slide::orderBy('position')->get()
+        ]);
     }
 
     public function store(StoreSlideRequest $storeSlideRequest)
