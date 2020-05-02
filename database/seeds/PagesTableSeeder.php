@@ -13,6 +13,8 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
+        $htmlBasePath = base_path('database/seeds/pages/');
+
         Page::insert([
             [
                 'name' => $name = 'biblioteca',
@@ -29,19 +31,19 @@ class PagesTableSeeder extends Seeder
             [
                 'name' => $name = 'institucional',
                 'slug' => Str::slug($name),
-                'content' => '',
+                'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
                 'image' => '/images/default-header.jpeg'
             ],
             [
                 'name' => $name = 'equipo',
                 'slug' => Str::slug($name),
-                'content' => '',
+                'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
                 'image' => '/images/default-header.jpeg'
             ],
             [
                 'name' => $name = 'prensa',
                 'slug' => Str::slug($name),
-                'content' => '',
+                'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
                 'image' => '/images/default-header.jpeg'
             ],
         ]);
