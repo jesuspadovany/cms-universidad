@@ -16,7 +16,7 @@
 		UBA "ROJAS"
 	</h1>
 
-	<ul>
+	<ul class="list-none pl-0">
 		<li>
 			<a
 				href="/admin"
