@@ -39,4 +39,12 @@ Route::middleware('auth')->group(function() {
         Route::get('/cambiar-imagen', [CoursesController::class, 'changePageImage'])->name('changePageImage');
         Route::put('/cambiar-imagen', [CoursesController::class, 'storePageImage']);
     });
+
+    Route::prefix('/paginas')->name('pages.')->group(function() {
+        Route::get('/{page:slug}', [PagesController::class, 'show'])->name('show');
+        Route::get('/{page:slug}/editar', [PagesController::class, 'edit'])->name('edit');
+        Route::put('/{page:slug}', [PagesController::class, 'update'])->name('update');
+        Route::get('/{page:slug}/imagen/editar', [PagesController::class, 'editImage'])->name('editImage');
+        Route::put('/{page:slug}/imagen', [PagesController::class, 'updateImage'])->name('updateImage');
+    });
 });

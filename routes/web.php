@@ -13,9 +13,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::name('home.')->group(function() {
     Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::get('/institucional', [HomeController::class, 'institutional'])->name('institutional');
-    Route::get('/equipo', [HomeController::class, 'team'])->name('team');
-    Route::get('/prensa', [HomeController::class, 'media'])->name('media');
+    Route::get('/{page:slug}', [HomeController::class, 'page'])->name('page');
 });
 
 Route::prefix('/cursos')->name('courses.')->group(function() {

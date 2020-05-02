@@ -2,7 +2,7 @@
     function getMenuLinkBgColor(array $routeNames)
     {
         foreach ($routeNames as $name) {
-            if (request()->routeIs($name)) {
+            if (request()->routeIs($name) || request()->is($name)) {
                 return 'bg-primary';
             }
         }
@@ -87,7 +87,13 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+            <a
+                href="{{ route('admin.pages.show', ['page' => 'institucional']) }}"
+                class="
+                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    {{ getMenuLinkBgColor(['admin/paginas/institucional', 'admin/paginas/institucional/editar', 'admin/paginas/institucional/imagen/editar']) }}
+                "
+            >
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-university fa-lg"></i>
 				</span>
@@ -95,7 +101,13 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+            <a
+                href="{{ route('admin.pages.show', ['page' => 'prensa']) }}"
+                class="
+                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    {{ getMenuLinkBgColor(['admin/paginas/prensa', 'admin/paginas/prensa/editar', 'admin/paginas/prensa/imagen/editar']) }}
+                "
+            >
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-video fa-lg"></i>
 				</span>
@@ -111,7 +123,13 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+            <a
+                href="{{ route('admin.pages.show', ['page' => 'equipo']) }}"
+                class="
+                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    {{ getMenuLinkBgColor(['admin/paginas/equipo', 'admin/paginas/equipo/editar', 'admin/paginas/equipo/imagen/editar']) }}
+                "
+            >
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-users fa-lg"></i>
 				</span>

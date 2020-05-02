@@ -82,7 +82,7 @@
     <div class="flex items-center mb-5">
       <label class="w-1/4" for="image">Imagen</label>
       <div class="w-2/4">
-          <input-image-with-preview name="image"></input-image-with-preview>
+        <InputImageWithPreview name="image" />
       </div>
     </div>
 
