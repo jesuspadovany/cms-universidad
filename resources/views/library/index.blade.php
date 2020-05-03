@@ -8,7 +8,7 @@
 <section class="container mx-auto px-4 py-6">
     <x-section-title title="Biblioteca" icon="fas fa-book" class="mb-6 text-primary">
         <a href="#" class="px-3 py-2 rounded-lg border-2 border-primary font-semibold">
-            filtrar por
+            Filtrar por
             <i class="fas fa-caret-down"></i>
         </a>
     </x-section-title>

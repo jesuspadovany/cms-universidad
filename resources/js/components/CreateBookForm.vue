@@ -2,6 +2,18 @@
   <form :action="url('admin/biblioteca/crear')" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" :value="csrfToken">
 
+    <!-- Ubicacion -->
+    <div class="flex items-center mb-5">
+      <label for="location" class="w-1/4">Ubicación</label>
+      <input
+        type="text"
+        name="location"
+        id="location"
+        placeholder="Ubicación"
+        class="form-control w-2/4"
+      >
+    </div>
+
     <!-- Título -->
     <div class="flex items-center mb-5">
       <label for="title" class="w-1/4">Título del libro</label>
@@ -10,7 +22,7 @@
         name="title"
         id="title"
         placeholder="Título del libro"
-        class="w-2/4 px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
+        class="form-control w-2/4"
       >
     </div>
 
@@ -23,8 +35,44 @@
         id="description"
         placeholder="Descripción"
         rows="4"
-        class="w-2/4 px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
+        class="form-control w-2/4"
       ></textarea>
+    </div>
+
+    <!-- Autor -->
+    <div class="flex items-center mb-5">
+      <label for="author" class="w-1/4">Autor</label>
+      <input
+        type="text"
+        name="author"
+        id="author"
+        placeholder="Autor"
+        class="form-control w-2/4"
+      >
+    </div>
+
+    <!-- Cantidad de páginas -->
+    <div class="flex items-center mb-5">
+      <label for="num_of_pages" class="w-1/4">Cantidad de páginas</label>
+      <input
+        type="number"
+        name="num_of_pages"
+        id="num_of_pages"
+        placeholder="Cantidad de páginas"
+        class="form-control w-2/4"
+      >
+    </div>
+
+    <!-- Fecha de publicacion -->
+    <div class="flex items-center mb-5">
+      <label for="published_at" class="w-1/4">Fecha de publicacion</label>
+      <input
+        type="date"
+        name="published_at"
+        id="published_at"
+        placeholder="Fecha de publicacion"
+        class="form-control w-2/4"
+      >
     </div>
 
     <!-- Categoría -->
@@ -35,12 +83,13 @@
         id="categories"
         placeholder="Asignar categoría"
         readonly
-        class="w-2/4 px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
+        class="form-control w-2/4"
         :value="selectedCategoriesText"
         @focus="showSelectCategoryModal = true"
       />
     </div>
 
+    <!-- Ids de las categorias seleccionadas -->
     <input v-for="(category, i) in selectedCategories"
       :key="category.id"
       type="hidden"
@@ -48,33 +97,63 @@
       :value="category.id"
     />
 
-    <!-- Tipo de venta -->
+    <!-- Es gratuito -->
     <div class="flex items-center mb-5">
-      <label for="sell_type" class="w-1/4">Tipo de venta</label>
+      <label for="is_free" class="w-1/4">Es gratuito</label>
       <select
-        name="sell_type"
-        id="sell_type"
-        class="w-2/4 px-2 py-2 bg-transparent focus:outline-none focus:shadow-outline border border-gray-400"
-        v-model="sellType"
+        name="is_free"
+        id="is_free"
+        class="form-control w-2/4 bg-transparent"
+        v-model="isFree"
       >
         <option value="" disabled selected>Seleccione una opción</option>
-        <option value="gratuito">gratuito</option>
-        <option value="pago">de pago</option>
+        <option value="si">si</option>
+        <option value="no">no</option>
       </select>
     </div>
 
     <!-- Precio -->
     <div
-      v-show="sellType === 'pago'"
+      v-show="isFree === 'no'"
       class="flex items-center mb-5"
     >
-      <label for="price" class="w-1/4">Precio</label>
+      <label for="price" class="w-1/4">Precio (AR)</label>
       <input
         type="number"
         name="price"
         id="price"
         placeholder="Precio"
-        class="w-2/4 px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
+        class="form-control w-2/4"
+      />
+    </div>
+
+    <!-- Disponible online -->
+    <div class="flex items-center mb-5">
+      <label for="is_available_online" class="w-1/4">Está disponible online</label>
+      <select
+        name="is_available_online"
+        id="is_available_online"
+        class="form-control w-2/4 bg-transparent"
+        v-model="isAvailableOnline"
+      >
+        <option value="" disabled selected>Seleccione una opción</option>
+        <option value="si">si</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+
+    <!-- Archivo -->
+    <div
+      v-show="isAvailableOnline === 'si'"
+      class="flex items-center mb-5"
+    >
+      <label for="file" class="w-1/4">Agregar archivo</label>
+      <input
+        type="file"
+        name="file"
+        id="file"
+        placeholder="Agregar archivo"
+        class="form-control w-2/4"
       />
     </div>
 
@@ -82,7 +161,7 @@
     <div class="flex items-center mb-5">
       <label class="w-1/4" for="image">Imagen</label>
       <div class="w-2/4">
-          <input-image-with-preview name="image"></input-image-with-preview>
+        <InputImageWithPreview name="image" />
       </div>
     </div>
 
@@ -113,7 +192,8 @@ export default {
     const url = useUrlGenerator();
     const showSelectCategoryModal = ref(false);
     const selectedCategories = ref([]);
-    const sellType = ref('');
+    const isFree = ref('');
+    const isAvailableOnline = ref('');
 
     const selectedCategoriesText = computed(() => selectedCategories.value.map(c => c.name).join(', '));
 
@@ -129,7 +209,8 @@ export default {
       selectedCategories,
       onCategoriesSelected,
       selectedCategoriesText,
-      sellType
+      isFree,
+      isAvailableOnline
     }
   }
 }
