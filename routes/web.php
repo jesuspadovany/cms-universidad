@@ -14,7 +14,8 @@ Route::name('home.')->group(function() {
 });
 
 Route::prefix('/cursos')->name('courses.')->group(function() {
-	Route::get('/', [CoursesController::class, 'index'])->name('index');
+    Route::get('/', [CoursesController::class, 'index'])->name('index');
+    Route::get('/detalle/{id}', [CoursesController::class, 'cursos'])->name('detalle');
 });
 
 Route::prefix('/agenda')->name('schedule.')->group(function() {

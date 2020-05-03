@@ -14,32 +14,46 @@
 		</a>
 	</x-section-title>
 
-	<div class="grid grid-cols-2 grid-rows-2 gap-6">
-		@foreach (range(1, 4) as $i)
+	<div class="grid grid-cols-2  gap-6"> 
+		@foreach ($cursos as $curso)
+			@if ($curso->clase == 1)
 			<div class="bg-gray-300 rounded-lg overflow-hidden">
 				<div class="flex h-40">
 					<div class="flex-shrink-0 flex w-32 bg-gray-400">
-						<img src="https://via.placeholder.com/65x100" class="inline h-32 m-auto shadow-md">
+						<img src="{{ asset($curso->imagen) }}" class="inline shadow-md">
 					</div>
 					<div class="p-4 w-full">
-						<h3 class="text-xl mb-2">Tatoo art</h3>
-
+						<h3 class="text-xl mb-2">{{$curso->nombre}}</h3>
 						<p>
-							Capo sinceramente supiera lo que dice aquí lo escribiria pero no tengo ni la mejor idea,
-							si sabes lo que dice por favor escribemelo
+							{{$curso->descripcion_curso}}
+						</p>
+						<br>
+						<p class="text-primary">
+							@foreach($curso->categories as  $category)
+								{{ $category->name }},
+							@endforeach
 						</p>
 					</div>
 				</div>
 				<div class="flex px-3 py-2 bg-primary font-semibold text-white">
 					<span>
-						$2800
-						<span class="text-sm">
-							(Incluye materiales)
-						</span>
+						@if($curso->precio == 0)
+							Gratis
+						@else
+							{{$curso->precio}} ARS 
+						@endif  
 					</span>
-					<a href="#" class="ml-auto hover:underline">Incribete</a>
+					<span>
+						@if($curso->material == null)
+							&nbsp;(No incluye material)
+						@else
+							&nbsp;(Incluye material)
+						@endif  
+					</span>
+					<a href="{{ route('courses.detalle',[$curso->id]) }}" class="ml-auto hover:underline">Inscribete</a>
 				</div>
 			</div>
+			@endif
 		@endforeach
 	</div>
 
@@ -51,32 +65,46 @@
 		</a>
 	</x-section-title>
 
-	<div class="grid grid-cols-2 grid-rows-2 gap-6">
-		@foreach (range(1, 4) as $i)
+	<div class="grid grid-cols-2 gap-6"> 
+		@foreach ($cursos ?? '' as $curso)
+			@if ($curso->clase == 2)
 			<div class="bg-gray-300 rounded-lg overflow-hidden">
 				<div class="flex h-40">
 					<div class="flex-shrink-0 flex w-32 bg-gray-400">
-						<img src="https://via.placeholder.com/65x100" class="inline h-32 m-auto shadow-md">
+						<img src="{{ asset($curso->imagen) }}"  class="inline shadow-md">
 					</div>
 					<div class="p-4 w-full">
-						<h3 class="text-xl mb-2">Tatoo art</h3>
-
+						<h3 class="text-xl mb-2">{{$curso->nombre}}</h3>
 						<p>
-							Capo sinceramente supiera lo que dice aquí lo escribiria pero no tengo ni la mejor idea,
-							si sabes lo que dice por favor escribemelo
+							{{$curso->descripcion_curso}}
+						</p>
+						<br>
+						<p class="text-primary">
+							@foreach($curso->categories as  $category)
+								{{ $category->name }},
+							@endforeach
 						</p>
 					</div>
 				</div>
 				<div class="flex px-3 py-2 bg-primary font-semibold text-white">
 					<span>
-						$2800
-						<span class="text-sm">
-							(Incluye materiales)
-						</span>
+						@if($curso->precio == 0)
+							Gratis
+						@else
+							{{$curso->precio}} ARS  
+						@endif  
 					</span>
-					<a href="#" class="ml-auto hover:underline">Incribete</a>
+					<span>
+						@if($curso->material == null)
+							&nbsp;(No incluye material)
+						@else
+							&nbsp;(Incluye material)
+						@endif  
+					</span>
+					<a href="{{ route('courses.detalle',[$curso->id]) }}" class="ml-auto hover:underline">Inscribete</a>
 				</div>
 			</div>
+			@endif
 		@endforeach
 	</div>
 </section>
