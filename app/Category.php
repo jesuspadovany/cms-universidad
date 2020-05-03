@@ -14,4 +14,9 @@ class Category extends Model
     {
         return $query->where('module', CategoryModules::LIBRARY);
     }
+
+    public function scopeWhereModuleIsCourses($query)
+    {
+        return $query->where('module', CategoryModules::COURSES);
+    }
 }

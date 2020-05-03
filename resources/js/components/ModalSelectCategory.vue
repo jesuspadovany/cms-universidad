@@ -10,6 +10,7 @@
         <div
           class="flex-shrink-0 w-1/2 px-6 py-2 text-xl"
           v-for="category in categories"
+          :key="category.id"
         >
           <CheckboxCategory
             :value="category"
@@ -38,7 +39,7 @@ import { useRangeFromOneToN } from '@/composables/useRangeFromOneToN';
 
 export default {
   props: {
-    categories: Array
+    categories: Array,
   },
   setup(props) {
     const selectedCategories = ref([]);

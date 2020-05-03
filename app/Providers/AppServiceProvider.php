@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Slide;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['admin.slider.index', 'admin.slider.create'], function($view) {
-            $view->with('slides', Slide::orderBy('position')->get());
-        });
+        Schema::defaultStringLength(191);
     }
 }

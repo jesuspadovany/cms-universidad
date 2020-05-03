@@ -10,7 +10,7 @@
 
     {{-- Slides --}}
     <div class="flex flex-wrap">
-        @foreach ($slides as $slide)
+        @foreach ($slides ?? '' as $slide)
             <div class="relative w-1/4 p-2">
                 <img src="{{ asset($slide->image) }}" class="block w-full h-40">
 
