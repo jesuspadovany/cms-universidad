@@ -24,13 +24,22 @@
 		<section class="w-full min-w-0 min-h-screen">
 			{{-- Barra superior --}}
 			<section class="flex items-center h-16 p-4 bg-primary text-white">
-				<button type="button" class="focus:outline-none">
+                <button type="button" class="focus:outline-none">
 					<i class="fa fa-bars fa-lg"></i>
 				</button>
 
 				<h2 class="px-4 leading-none font-semibold text-3xl">@yield('section-title')</h2>
 
-				<a href="#" class="ml-auto p-2 hover:bg-primary-darker rounded text-center text-sm">
+
+                <form action="{{ route('logout') }}" method="POST" class="hidden" ref="logoutForm">
+                    @csrf
+                </form>
+
+                <a
+                    href="{{ route('logout') }}"
+                    class="ml-auto p-2 hover:bg-primary-darker rounded text-center text-sm"
+                    @click.prevent="$refs.logoutForm.submit()"
+                >
 					<div>
 						<i class="fa fa-sign-out-alt fa-lg"></i>
 					</div>

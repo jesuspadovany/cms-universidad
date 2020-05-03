@@ -11,6 +11,7 @@ module.exports = {
     },
   },
   variants: {
+    padding: ['responsive', 'odd', 'even'],
     backgroundColor: ['responsive', 'hover', 'focus', 'odd', 'even']
   },
   plugins: [],

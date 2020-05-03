@@ -24,8 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(['admin.slider.index', 'admin.slider.create'], function($view) {
-            $view->with('slides', Slide::orderBy('position')->get());
-        });
+        //
     }
 }

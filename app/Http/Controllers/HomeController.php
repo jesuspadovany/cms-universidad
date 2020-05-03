@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Page;
 use App\Slide;
 
 class HomeController extends Controller
@@ -15,18 +16,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function institutional()
+    public function page(Page $page)
     {
-        return view('home.institutional');
-    }
-
-    public function team()
-    {
-        return view('home.team');
-    }
-
-    public function media()
-    {
-        return view('home.media');
+        return view('home.page', [
+            'page' => $page
+        ]);
     }
 }

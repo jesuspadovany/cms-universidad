@@ -2,6 +2,7 @@
 
 use App\Page;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PagesTableSeeder extends Seeder
 {
@@ -12,14 +13,38 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
+        $htmlBasePath = base_path('database/seeds/pages/');
+
         Page::insert([
             [
-                'name' => 'biblioteca',
-                'image' => 'https://images3.alphacoders.com/975/thumb-1920-975999.png'
+                'name' => $name = 'biblioteca',
+                'slug' => Str::slug($name),
+                'content' => '',
+                'image' => '/images/default-header.jpeg'
             ],
             [
-                'name' => 'cursos',
-                'image' => 'https://steamuserimages-a.akamaihd.net/ugc/940586530515504757/CDDE77CB810474E1C07B945E40AE4713141AFD76/'
+                'name' => $name = 'cursos',
+                'slug' => Str::slug($name),
+                'content' => '',
+                'image' => '/images/default-header.jpeg'
+            ],
+            [
+                'name' => $name = 'institucional',
+                'slug' => Str::slug($name),
+                'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
+                'image' => '/images/default-header.jpeg'
+            ],
+            [
+                'name' => $name = 'equipo',
+                'slug' => Str::slug($name),
+                'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
+                'image' => '/images/default-header.jpeg'
+            ],
+            [
+                'name' => $name = 'prensa',
+                'slug' => Str::slug($name),
+                'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
+                'image' => '/images/default-header.jpeg'
             ],
         ]);
     }

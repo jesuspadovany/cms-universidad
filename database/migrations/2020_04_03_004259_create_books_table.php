@@ -16,12 +16,19 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->string('description');
             $table->boolean('is_free');
             $table->decimal('price', 12, 2);
+            $table->string('author');
+            $table->integer('num_of_pages');
+            $table->datetime('published_at');
             $table->string('image');
+            $table->string('location')->nullable();
+            $table->boolean('is_available_online');
+            $table->string('file')->nullable();
             $table->boolean('in_slider')->default(0);
-            $table->integer('position');
+            $table->integer('position')->default(1);
             $table->timestamps();
         });
     }
