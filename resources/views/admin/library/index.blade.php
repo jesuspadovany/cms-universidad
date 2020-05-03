@@ -55,22 +55,25 @@
     <h3 class="mb-4 font-semibold text-primary text-xl">Libros</h3>
 
     {{-- Tabla de libros --}}
-    <table class="w-full rounded-md overflow-hidden bg-gray-200 text-left">
+    <table class="table">
         <thead>
             <tr>
-                <th class="px-3 py-2 bg-gray-400">Título</th>
-                <th class="px-3 py-2 bg-gray-400">¿Es gratuito?</th>
-                <th class="px-3 py-2 bg-gray-400">Precio</th>
-                <th class="px-3 py-2 bg-gray-400"></th>
+                <th>Título</th>
+                <th>¿Es gratuito?</th>
+                <th>Precio</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($books as $book)
                 <tr>
-                    <td class="px-3 py-2 {{ !$loop->last ? 'border-b' : '' }} border-gray-400">{{ $book->title }}</td>
-                    <td class="px-3 py-2 {{ !$loop->last ? 'border-b' : '' }} border-gray-400">{{ $book->is_free ? 'Si' : 'No' }}</td>
-                    <td class="px-3 py-2 {{ !$loop->last ? 'border-b' : '' }} border-gray-400">{{ $book->price }}</td>
-                    <td class="px-3 py-2 {{ !$loop->last ? 'border-b' : '' }} border-gray-400">
+                    <td>{{ $book->title }}</td>
+                    <td>{{ $book->is_free ? 'Si' : 'No' }}</td>
+                    <td>{{ $book->price }}</td>
+                    <td width="150" class="text-right">
+                        {{-- Link de editar --}}
+                        <a href="#!" class="mr-3 text-blue-600">Editar</a>
+
                         {{-- Form de eliminar --}}
                         <form
                             action="{{ route('admin.library.delete', $book) }}"
@@ -89,13 +92,12 @@
                         >
                             <a
                                 href="#!"
-                                class="hover:underline"
+                                class="text-red-500"
                                 @click.prevent="show"
                             >
                                 Eliminar
                             </a>
                         </confirm-modal-trigger>
-                        <a href="#!" class="ml-3">Editar</a>
                     </td>
                 </tr>
             @endforeach

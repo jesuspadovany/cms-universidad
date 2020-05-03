@@ -58,16 +58,52 @@ body {
     }
 }
 
-.form-control {
-    @apply .block .w-full .px-2 .py-2 .border .border-gray-400;
+.form {
+    &-control {
+        @apply .block .w-full .px-2 .py-2 .border .border-gray-400;
 
-    &:focus {
-        @apply .outline-none .shadow-outline;
+        &:focus {
+            @apply .outline-none .shadow-outline;
+        }
+    }
+
+    &-error-message {
+        @apply .text-xs .text-red-500;
     }
 }
 
-.form-error-message {
-    @apply .text-xs .text-red-500;
+.table {
+    @apply .w-full .rounded-md .overflow-hidden .bg-gray-200 .text-left;
+
+    & td, th {
+        @apply .px-3 .py-2;
+    }
+
+    & th {
+        @apply .bg-gray-400;
+    }
+
+    & td {
+        @apply .border-b .border-gray-400;
+    }
+
+    & tr:last-of-type td {
+        @apply .border-none;
+    }
+}
+
+.list-reset {
+    @apply .list-none .pl-0;
+}
+
+.sidenav {
+    &__link {
+        @apply .flex .items-center .pl-2 .pr-3 .py-2;
+
+        &:hover {
+            @apply .bg-primary .no-underline;
+        }
+    }
 }
 
 .footer {
@@ -75,6 +111,12 @@ body {
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+.book__cover {
+    width: 430px;
+    box-shadow: 6px 6px 5px rgba($color: #000000, $alpha: .4);
+    @apply .h-full;
 }
 
 .hero-section-h {

@@ -1,17 +1,41 @@
 <template>
   <div class="bg-gray-300 rounded-lg overflow-hidden">
     <!-- Body -->
-    <div class="flex h-40">
+    <div class="flex h-48">
       <!-- Image -->
-      <div class="flex-shrink-0 flex w-32 bg-gray-400">
-        <img :src="url(book.image)" class="inline h-32 m-auto shadow-md">
+      <div class="flex-shrink-0 flex w-32 p-3 bg-gray-400">
+        <a :href="url(`biblioteca/${book.slug}`)">
+          <img :src="url(book.image)" class="image">
+        </a>
       </div>
-      <!-- Content -->
-      <div class="p-4 w-full">
-        <h3 class="text-xl mb-2">{{ book.title }}</h3>
 
+      <!-- Content -->
+      <div class="p-4 w-full text-sm">
+        <!-- Nombre del libro -->
+        <h3 class="mb-2 leading-none capitalize text-xl">
+          <a :href="url(`biblioteca/${book.slug}`)">
+            {{ book.title }}
+          </a>
+        </h3>
+
+        <!-- Info del libro -->
         <p>
-          {{ truncate(book.description, 182) }}
+          <b>Autor:</b>
+          <span class="capitalize">{{ book.author }}</span>
+        </p>
+        <p>
+          <b>N° de páginas:</b>
+        {{ book.num_of_pages }}
+        </p>
+        <p>
+          <b>Fecha de publicación:</b>
+          {{ new Date(book.published_at).toLocaleDateString() }}
+        </p>
+
+        <!-- Sinopsis del libro -->
+        <p class="sinopsis mt-2" :title="book.description">
+          <b>Sinopsis:</b>
+          {{ book.description }}
         </p>
       </div>
     </div>
@@ -24,7 +48,7 @@
         Leer
       </a>
       <a href="#" class="ml-auto" v-else>
-        Comparar
+        Comprar
       </a>
     </div>
   </div>
@@ -52,3 +76,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.image {
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
+  @apply .inline .h-full .w-full;
+}
+
+.sinopsis {
+  line-height: 1.35rem;
+  max-height: 4.05rem;
+  overflow: hidden;
+}
+</style>

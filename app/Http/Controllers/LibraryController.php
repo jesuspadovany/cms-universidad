@@ -14,4 +14,11 @@ class LibraryController extends Controller
             'page' => Page::where('name', 'biblioteca')->first()
         ]);
     }
+
+    public function show(Book $book)
+    {
+        return view('library.show', [
+            'book' => $book
+        ]);
+    }
 }

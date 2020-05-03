@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Book extends Model
 {
-    public const IMAGE_PATH = 'public/books';
+    public const BOOKS_PATH = 'public/books';
 
     protected $guarded = [];
 
@@ -27,8 +27,15 @@ class Book extends Model
     public function setImageAttribute($image)
     {
         $this->attributes['image'] = $image instanceof UploadedFile
-            ? Storage::url($image->store(static::IMAGE_PATH))
+            ? Storage::url($image->store(static::BOOKS_PATH))
             : $image;
+    }
+
+    public function setFileAttribute($file)
+    {
+        $this->attributes['file'] = $file instanceof UploadedFile
+            ? Storage::url($file->store(static::BOOKS_PATH))
+            : $file;
     }
 
     public function setPriceAttribute($price)

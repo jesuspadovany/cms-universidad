@@ -54,7 +54,7 @@
             </p>
 
             <!-- Book card -->
-            <BookCard class="mb-6" :book="book" />
+            <BookCard class="mb-6 w-full" :book="book" />
 
             <!-- Botones de arriba posición -->
             <div class="px-1">
@@ -89,10 +89,11 @@
         <div class="w-2/5 p-5">
           <h2 class="mb-4 font-semibold text-4xl text-primary">Lista de libros:</h2>
 
-          <ul>
+          <ul class="list-reset">
             <li
               class="px-2 py-1 odd:bg-gray-300 even:bg-gray-400"
               v-for="(book, i) in localBooksNotInSlider"
+              :key="i"
             >
               <!-- Botón de agregar al slide -->
               <button

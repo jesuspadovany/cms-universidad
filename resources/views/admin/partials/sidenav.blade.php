@@ -16,12 +16,12 @@
 		UBA "ROJAS"
 	</h1>
 
-	<ul class="list-none pl-0">
+	<ul class="list-reset">
 		<li>
 			<a
 				href="/admin"
 				class="
-					flex items-center hover:bg-primary pl-2 pr-3 py-2
+					sidenav__link
 					{{ request()->is('admin') ? 'bg-primary' : '' }}
 				"
 			>
@@ -35,7 +35,7 @@
 			<a
 				href="{{ route('admin.slider.index') }}"
 				class="
-					flex items-center hover:bg-primary pl-2 pr-3 py-2
+					sidenav__link
                     {{ getMenuLinkBgColor(['admin.slider.index', 'admin.slider.create']) }}
 				">
 
@@ -49,7 +49,7 @@
 			<a
                 href="{{ route('admin.schedule.index') }}"
                 class="
-                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    sidenav__link
                     {{ getMenuLinkBgColor(['admin.schedule.index', 'admin.schedule.slider', 'admin.schedule.create']) }}
                 ">
 				<span class="inline-block mr-2 w-10 text-center">
@@ -62,7 +62,7 @@
 			<a
                 href="{{ route('admin.library.index') }}"
                 class="
-                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    sidenav__link
                     {{ getMenuLinkBgColor(['admin.library.index', 'admin.library.create', 'admin.library.slider', 'admin.library.changePageImage']) }}
                 "
             >
@@ -76,7 +76,7 @@
 			<a
                 href="{{ route('admin.courses.index') }}"
                 class="
-                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    sidenav__link
                     {{ getMenuLinkBgColor(['admin.courses.index', 'admin.courses.changePageImage']) }}
                 "
             >
@@ -90,7 +90,7 @@
             <a
                 href="{{ route('admin.pages.show', ['page' => 'institucional']) }}"
                 class="
-                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    sidenav__link
                     {{ getMenuLinkBgColor(['admin/paginas/institucional', 'admin/paginas/institucional/editar', 'admin/paginas/institucional/imagen/editar']) }}
                 "
             >
@@ -104,7 +104,7 @@
             <a
                 href="{{ route('admin.pages.show', ['page' => 'prensa']) }}"
                 class="
-                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    sidenav__link
                     {{ getMenuLinkBgColor(['admin/paginas/prensa', 'admin/paginas/prensa/editar', 'admin/paginas/prensa/imagen/editar']) }}
                 "
             >
@@ -115,7 +115,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+			<a href="#" class="sidenav__link">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-clipboard-list fa-lg"></i>
 				</span>
@@ -126,7 +126,7 @@
             <a
                 href="{{ route('admin.pages.show', ['page' => 'equipo']) }}"
                 class="
-                    flex items-center hover:bg-primary pl-2 pr-3 py-2
+                    sidenav__link
                     {{ getMenuLinkBgColor(['admin/paginas/equipo', 'admin/paginas/equipo/editar', 'admin/paginas/equipo/imagen/editar']) }}
                 "
             >
@@ -137,7 +137,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+			<a href="#" class="sidenav__link">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-home fa-lg"></i>
 				</span>
@@ -145,7 +145,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+			<a href="#" class="sidenav__link">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-home fa-lg"></i>
 				</span>
@@ -153,7 +153,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+			<a href="#" class="sidenav__link">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-bars fa-lg"></i>
 				</span>
@@ -161,7 +161,7 @@
 			</a>
 		</li>
 		<li>
-			<a href="#" class="flex items-center hover:bg-primary pl-2 pr-3 py-2">
+			<a href="#" class="sidenav__link">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="far fa-newspaper fa-lg"></i>
 				</span>
