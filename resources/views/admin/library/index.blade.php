@@ -61,6 +61,8 @@
                 <th>Título</th>
                 <th>¿Es gratuito?</th>
                 <th>Precio</th>
+                <th>Autor</th>
+                <th>¿Es electrónico?</th>
                 <th></th>
             </tr>
         </thead>
@@ -70,9 +72,11 @@
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->is_free ? 'Si' : 'No' }}</td>
                     <td>{{ $book->price }}</td>
+                    <td>{{ $book->author }}</td>
+                    <td>{{ $book->isElectronic ? 'Si' : 'No' }}</td>
                     <td width="150" class="text-right">
                         {{-- Link de editar --}}
-                        <a href="#!" class="mr-3 text-blue-600">Editar</a>
+                        <a href="{{ route('admin.library.edit', $book) }}" class="mr-3 text-blue-600">Editar</a>
 
                         {{-- Form de eliminar --}}
                         <form

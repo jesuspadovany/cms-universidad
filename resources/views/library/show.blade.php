@@ -13,7 +13,7 @@
 @section('content')
 <section class="container mx-auto px-4 py-6">
     {{-- Título del libro --}}
-    <x-section-title :title="$book->title" class="mb-6 font-bold text-primary"></x-section-title>
+    <x-section-title :title="ucfirst($book->title)" class="mb-6 font-bold text-primary"></x-section-title>
 
     {{-- Autor --}}
     <p class="capitalize font-bold">{{ $book->author }}</p>

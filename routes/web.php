@@ -21,7 +21,7 @@ Route::prefix('/agenda')->name('schedule.')->group(function() {
 
 Route::prefix('/biblioteca')->name('library.')->group(function() {
     Route::get('/', [LibraryController::class, 'index'])->name('index');
-    Route::get('/{book:slug}', [LibraryController::class, 'show'])->name('show');
+    Route::get('/{slug}/{book}', [LibraryController::class, 'show'])->name('show');
 });
 
 Route::name('home.')->group(function() {

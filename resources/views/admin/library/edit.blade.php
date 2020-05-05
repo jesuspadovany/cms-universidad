@@ -1,17 +1,15 @@
 @extends('admin.layouts.master')
 
-@section('section-title', 'Biblioteca')
-
 @section('content')
 <section class="p-4">
     {{-- Errores de validación --}}
-    <x-validation-error-list></x-validation-error-list>
+    <x-validation-error-list class="mb-4"></x-validation-error-list>
 
-    <create-book-form
+    <edit-book-form
         class="p-6"
+        :book='@json($book)'
         :categories='@json($categories)'
         :csrf-token='@json(csrf_token())'
-        :old-data='@json($oldData)'
-    ></create-book-form>
+    ></edit-book-form>
 </section>
 @endsection

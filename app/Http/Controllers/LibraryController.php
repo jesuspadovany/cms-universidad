@@ -15,8 +15,12 @@ class LibraryController extends Controller
         ]);
     }
 
-    public function show(Book $book)
+    public function show($slug, $id)
     {
+        $book = Book::where('id', $id)
+            ->where('slug', $slug)
+            ->firstOrFail();
+
         return view('library.show', [
             'book' => $book
         ]);

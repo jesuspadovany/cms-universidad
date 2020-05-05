@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/', [LibraryController::class, 'index'])->name('index');
         Route::get('/crear', [LibraryController::class, 'create'])->name('create');
         Route::post('/crear', [LibraryController::class, 'store']);
+        Route::get('/{book}/editar', [LibraryController::class, 'edit'])->name('edit');
+        Route::put('/{book}', [LibraryController::class, 'update'])->name('update');
         Route::delete('/{book}', [LibraryController::class, 'delete'])->name('delete');
         Route::get('/cambiar-imagen', [LibraryController::class, 'changePageImage'])->name('changePageImage');
         Route::put('/cambiar-imagen', [LibraryController::class, 'storePageImage']);

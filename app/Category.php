@@ -9,9 +9,15 @@ class Category extends Model
 {
     protected $guarded = [];
 
-    //------------------- Scopeds -------------------//
+    //------------------- Scopes -------------------//
     public function scopeWhereModuleIsLibrary($query)
     {
         return $query->where('module', CategoryModules::LIBRARY);
+    }
+
+    //------------------- Static methods -------------------//
+    public static function getLibraryCategories()
+    {
+        return static::whereModuleIsLibrary()->get();
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBookRequest extends FormRequest
+class UpdateBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -44,7 +44,6 @@ class StoreBookRequest extends FormRequest
             'author' => ['required', 'string', 'max:255'],
             'num_of_pages' => ['required', 'integer', 'min:1'],
             'published_at' => ['required', 'before:today'],
-            'image' => ['required', 'image'],
             'is_electronic' => ['required'],
             'location' => [Rule::requiredIf(! $this->is_electronic), 'nullable', 'string', 'max:255'],
             'file' => [Rule::requiredIf($this->is_electronic), 'nullable', 'file', 'mimes:pdf'],
@@ -62,7 +61,6 @@ class StoreBookRequest extends FormRequest
             'author' => 'autor',
             'num_of_pages' => 'número de páginas',
             'published_at' => 'fecha de publicación',
-            'image' => 'imagen',
             'location' => 'ubicación',
             'file' => 'archivo',
             'categories' => 'categorias',
