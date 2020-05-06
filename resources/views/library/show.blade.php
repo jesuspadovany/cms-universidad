@@ -29,7 +29,7 @@
 
     {{-- Sinopsis --}}
     <p class="my-4">
-        <b>Sinopsis:</b>
+        <b>Sinópsis:</b>
         {{ $book->description }}
     </p>
 

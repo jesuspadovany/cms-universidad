@@ -9,7 +9,6 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCoursesRequest;
 use App\Http\Requests\StorePageImageRequest;
 use App\Page;
-//use Facade\FlareClient\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
@@ -79,7 +78,6 @@ class CoursesController extends Controller
         ]);
     }
 
-    //Eliminar
     public function delete(Course $course)
     {
         $course->delete();
@@ -102,19 +100,21 @@ class CoursesController extends Controller
     }
 
     public function storeUpdate(UpdateCoursesRequest $request , Course $course)
-    {      
-        $course->update(['ubicacion' => $request->ubicacion,
-                      'nombre' => $request->nombre,
-                      'descripcion_curso' => $request->descripcion_curso,
-                      'descipcion' => $request->descripcion,
-                      'precio' => $request->precio,
-                      'horarios' => $request->horario,
-                      'profesor' => $request->profesor,
-                      'anfitrion' => $request->anfitrion,
-                      'clase' => $request->clase,
-                      'duracion' => $request->duracion,
-                    ]);
-            $course->categories()->sync($request->categories);        
+    {
+        $course->update([
+            'ubicacion' => $request->ubicacion,
+            'nombre' => $request->nombre,
+            'descripcion_curso' => $request->descripcion_curso,
+            'descipcion' => $request->descripcion,
+            'precio' => $request->precio,
+            'horarios' => $request->horario,
+            'profesor' => $request->profesor,
+            'anfitrion' => $request->anfitrion,
+            'clase' => $request->clase,
+            'duracion' => $request->duracion,
+        ]);
+
+        $course->categories()->sync($request->categories);
 
         return redirect()->route('admin.courses.index')->with('alert', [
             'type' => 'success',

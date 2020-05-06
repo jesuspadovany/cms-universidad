@@ -21,9 +21,19 @@ class Category extends Model
         return $query->where('module', CategoryModules::LIBRARY);
     }
 
+    public function scopeWhereModuleIsCourses($query)
+    {
+        return $query->where('module', CategoryModules::COURSES);
+    }
+
     //------------------- Static methods -------------------//
     public static function getLibraryCategories()
     {
         return static::whereModuleIsLibrary()->get();
+    }
+
+    public static function getCoursesCategories()
+    {
+        return static::whereModuleIsCourses()->get();
     }
 }

@@ -14,7 +14,8 @@ class CoursesController extends Controller
     {
     	return view('courses.index', [
              'page' => Page::where('name', 'cursos')->first(),
-             'cursos' => Course::orderBy('nombre')->get()
+             'cursos' => Course::orderBy('nombre')->get(),
+             'categories' => Category::getCoursesCategories()
         ]);
     }
 

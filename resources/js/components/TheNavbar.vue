@@ -1,6 +1,6 @@
 <template>
-  <nav class="relative z-20 flex items-center px-3 h-16 bg-primary text-white shadow-md">
-    <a :href="url('')" class="text-xl hover:no-underline">el Rojas</a>
+  <nav class="navbar">
+    <a :href="url('')" class="text-xl hover:no-underline font-belgrano">el Rojas</a>
 
     <div class="flex items-center ml-auto">
       <div v-show="!showSearchInput">
@@ -73,6 +73,13 @@ function useNavbarSearch(debounceTime = 300) {
 </script>
 
 <style scoped>
+.navbar {
+  @apply .relative .z-20 .flex .items-center .px-10 .h-16 .bg-primary .text-white .shadow-md;
+  background-image: url('/images/logo-navbar.png');
+  background-repeat: no-repeat;
+  background-size: auto 65px;
+}
+
 .expandable-search{
   top: 100%;
   left: 0;

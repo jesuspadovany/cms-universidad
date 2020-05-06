@@ -26,7 +26,7 @@ class PagesTableSeeder extends Seeder
                 'name' => $name = 'cursos',
                 'slug' => Str::slug($name),
                 'content' => '',
-                'image' => '/images/default-header.jpeg'
+                'image' => '/images/cursos.png'
             ],
             [
                 'name' => $name = 'institucional',

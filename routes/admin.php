@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function() {
     Route::prefix('/cursos')->name('courses.')->group(function() {
         Route::get('/', [CoursesController::class, 'index'])->name('index');
         Route::get('/crear', [CoursesController::class, 'create'])->name('create');
-        Route::post('/crear', [CoursesController::class, 'store']); //RUTA GUARDAR
+        Route::post('/crear', [CoursesController::class, 'store']);
         Route::get('/cambiar-imagen', [CoursesController::class, 'changePageImage'])->name('changePageImage');
         Route::put('/cambiar-imagen', [CoursesController::class, 'storePageImage']);
         Route::get('/actualizar/{course}', [CoursesController::class, 'updateCourseComponent'])->name('update');

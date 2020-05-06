@@ -43,8 +43,11 @@
                     <div class="w-1/2">
                         <h2 class="mb-4 text-5xl text-primary">Centro Cultural Rojas</h2>
                         <p class="text-2xl">
-                            C104AAF / CABA Argentina <br>
-                            +54 11 4953-5405
+                            C104AAF / CABA Argentina / +54 11 4953-5405 <br>
+                            Seguinos y suscribete al Newsletter <br>
+                            <button type="button" class="">
+                                Suscribete al Newsletter
+                            </button>
                         </p>
                     </div>
                 </div>

@@ -24,7 +24,7 @@
         <div class="flex flex-col items-end justify-center w-1/2 text-right">
             <a href="{{ route('admin.courses.create') }}" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Agregar curso</a>
 
-            <a href="{{ route('admin.filters.index') }}" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Filtros</a>
+            <a href="#" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Filtros</a>
             <a href="#" class="px-4 py-3 border-2 border-primary rounded text-primary text-xl">
                 Filtrar por
                 <i class="fas fa-caret-down"></i>
@@ -71,8 +71,8 @@
                         @if($curso->precio == 0)
                             Gratis
                         @else
-                            {{$curso->precio}} ARS 
-                        @endif  
+                            {{$curso->precio}} ARS
+                        @endif
                     </span>
                     <a href="{{ route('admin.courses.update',[$curso->id]) }}" class="m-auto hover:underline">Editar</a>
 

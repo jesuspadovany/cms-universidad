@@ -1,10 +1,14 @@
 @extends('layouts.master')
 
+@section('header')
+<hero-section bg-image="{{ asset('images/agenda.png') }}" bg-size="100% 100%"></hero-section>
+@endsection
+
 @section('content')
 <section class="container mx-auto px-4 py-6">
 	<x-section-title title="Agenda" icon="fas fa-calendar-alt" class="mb-6 text-primary">
 		<a href="#" class="px-3 py-2 rounded-lg border-2 border-primary font-semibold">
-			filtrar por
+			Filtrar por
 			<i class="fas fa-caret-down"></i>
 		</a>
 	</x-section-title>
