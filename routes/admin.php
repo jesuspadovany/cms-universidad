@@ -38,8 +38,13 @@ Route::middleware('auth')->group(function() {
 
     Route::prefix('/cursos')->name('courses.')->group(function() {
         Route::get('/', [CoursesController::class, 'index'])->name('index');
+        Route::get('/crear', [CoursesController::class, 'create'])->name('create');
+        Route::post('/crear', [CoursesController::class, 'store']); //RUTA GUARDAR
         Route::get('/cambiar-imagen', [CoursesController::class, 'changePageImage'])->name('changePageImage');
         Route::put('/cambiar-imagen', [CoursesController::class, 'storePageImage']);
+        Route::get('/actualizar/{course}', [CoursesController::class, 'updateCourseComponent'])->name('update');
+        Route::put('/actualizar/{course}', [CoursesController::class, 'storeUpdate'])->name('actualizar');
+        Route::delete('/{course}', [CoursesController::class, 'delete'])->name('eliminar');
     });
 
     Route::prefix('/paginas')->name('pages.')->group(function() {
@@ -50,3 +55,5 @@ Route::middleware('auth')->group(function() {
         Route::put('/{page:slug}/imagen', [PagesController::class, 'updateImage'])->name('updateImage');
     });
 });
+
+
