@@ -13,7 +13,7 @@
       <div class="p-4 w-full text-sm">
         <!-- Nombre del libro -->
         <h3 class="mb-2 leading-none capitalize text-xl">
-          <a :href="url(`biblioteca/${book.slug}`)">
+          <a :href="url(`biblioteca/${book.slug}/${book.id}`)">
             {{ book.title }}
           </a>
         </h3>
