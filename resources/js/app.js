@@ -8,6 +8,8 @@ Vue.use(VueCompositionApi);
 
 Vue.use(CKEditor);
 
+Vue.config.productionTip = false;
+
 new Vue({
   el: '#app'
 });

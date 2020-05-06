@@ -9,14 +9,21 @@ class Category extends Model
 {
     protected $guarded = [];
 
-    //------------------- Scopeds -------------------//
+    //-------------------- Relationships --------------------//
+    public function books()
+    {
+        return $this->belongsToMany(Book::class);
+    }
+
+    //------------------- Scopes -------------------//
     public function scopeWhereModuleIsLibrary($query)
     {
         return $query->where('module', CategoryModules::LIBRARY);
     }
 
-    public function scopeWhereModuleIsCourses($query)
+    //------------------- Static methods -------------------//
+    public static function getLibraryCategories()
     {
-        return $query->where('module', CategoryModules::COURSES);
+        return static::whereModuleIsLibrary()->get();
     }
 }

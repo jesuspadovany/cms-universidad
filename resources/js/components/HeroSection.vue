@@ -11,6 +11,10 @@ export default {
     bgImage: {
       type: String,
       default: '#'
+    },
+    bgSize: {
+      type: String,
+      default: 'cover'
     }
   },
   setup(props) {
@@ -18,7 +22,8 @@ export default {
 
     const styles = computed(() => {
       return {
-        backgroundImage: `url('${url(props.bgImage, false)}')`
+        backgroundImage: `url('${url(props.bgImage, false)}')`,
+        backgroundSize: props.bgSize,
       }
     });
 
@@ -30,7 +35,6 @@ export default {
 <style scoped>
 .hero {
   @apply .h-full;
-  background-size: cover;
   background-repeat: no-repeat;
 }
 </style>

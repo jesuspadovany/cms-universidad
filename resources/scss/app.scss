@@ -43,10 +43,10 @@ body {
 }
 
 .btn {
-    @apply .inline-block .px-3 .py-2 .rounded-md;
+    @apply .inline-block .px-3 .py-2 .rounded-md .font-semibold;
 
     &:hover {
-        @apply .no-underline .bg-primary-darker;
+        @apply .no-underline;
     }
 
     &:focus {
@@ -54,7 +54,15 @@ body {
     }
 
     &-primary {
-        @apply .bg-primary .font-semibold .text-white;
+        @apply .bg-primary .text-white;
+
+        &:hover {
+            @apply .bg-primary-darker;
+        }
+    }
+
+    &-primary-outline {
+        @apply .bg-white .border-2 .border-primary .text-primary;
     }
 }
 

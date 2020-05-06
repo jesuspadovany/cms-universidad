@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Book;
+use App\Page;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreBookRequest;
-use App\Http\Requests\StoreBooksSliderOrderRequest;
-use App\Page;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateBookRequest;
+use App\Http\Requests\StoreBooksSliderOrderRequest;
 
 class LibraryController extends Controller
 {
@@ -24,7 +25,8 @@ class LibraryController extends Controller
     public function create()
     {
         return view('admin.library.create', [
-            'categories' => Category::whereModuleIsLibrary()->get()
+            'categories' => Category::getLibraryCategories(),
+            'oldData' => $this->getOldInputDataOrEmptyObject()
         ]);
     }
 
@@ -37,6 +39,29 @@ class LibraryController extends Controller
         return redirect()->route('admin.library.index')->with('alert', [
             'type' => 'success',
             'message' => 'El libro ha sido agregado'
+        ]);
+    }
+
+    public function edit(Book $book)
+    {
+        $book->load('categories');
+
+        return view('admin.library.edit', [
+            'book' => $book,
+            'categories' => Category::getLibraryCategories(),
+            'oldData' => $this->getOldInputDataOrEmptyObject()
+        ]);
+    }
+
+    public function update(UpdateBookRequest $updateBookRequest, Book $book)
+    {
+        $book->update($updateBookRequest->getBookData());
+
+        $book->categories()->sync($updateBookRequest->categories);
+
+        return redirect()->route('admin.library.index')->with('alert', [
+            'type' => 'success',
+            'message' => 'El libro ha sido editado'
         ]);
     }
 
@@ -99,5 +124,10 @@ class LibraryController extends Controller
             'type' => 'success',
             'message' => 'La imagen ha sido actualizada'
         ]);
+    }
+
+    public function getOldInputDataOrEmptyObject()
+    {
+        return empty(request()->old()) ? new \StdClass : request()->old();
     }
 }

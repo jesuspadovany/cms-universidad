@@ -4,7 +4,7 @@
     <div class="flex h-48">
       <!-- Image -->
       <div class="flex-shrink-0 flex w-32 p-3 bg-gray-400">
-        <a :href="url(`biblioteca/${book.slug}`)">
+        <a :href="url(`biblioteca/${book.slug}/${book.id}`)">
           <img :src="url(book.image)" class="image">
         </a>
       </div>
@@ -13,7 +13,7 @@
       <div class="p-4 w-full text-sm">
         <!-- Nombre del libro -->
         <h3 class="mb-2 leading-none capitalize text-xl">
-          <a :href="url(`biblioteca/${book.slug}`)">
+          <a :href="url(`biblioteca/${book.slug}/${book.id}`)">
             {{ book.title }}
           </a>
         </h3>

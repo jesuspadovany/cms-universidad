@@ -1,6 +1,7 @@
 <template>
-  <form :action="url('admin/biblioteca/crear')" method="POST" enctype="multipart/form-data">
+    <form :action="url(`admin/biblioteca/${book.id}`)" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" :value="csrfToken">
+    <input type="hidden" name="_method" value="PUT">
 
     <!-- Título -->
     <div class="flex items-center mb-5">
@@ -100,8 +101,8 @@
         v-model="bookState.isFree"
       >
         <option value="" disabled selected>Seleccione una opción</option>
-        <option value="si">Si</option>
-        <option value="no">No</option>
+        <option value="si">si</option>
+        <option value="no">no</option>
       </select>
     </div>
 
@@ -121,19 +122,35 @@
       />
     </div>
 
-    <!-- ¿Es electrónico? -->
+    <!-- Disponible online -->
     <div class="flex items-center mb-5">
-      <label for="is_electronic" class="w-1/4">¿Es electrónico?</label>
+      <label for="is_available_online" class="w-1/4">¿Es electrónico?</label>
       <select
-        name="is_electronic"
-        id="is_electronic"
+        name="is_available_online"
+        id="is_available_online"
         class="form-control w-2/4 bg-transparent"
         v-model="bookState.isElectronic"
       >
         <option value="" disabled selected>Seleccione una opción</option>
-        <option value="si">Si</option>
-        <option value="no">No</option>
+        <option value="si">si</option>
+        <option value="no">no</option>
       </select>
+    </div>
+
+    <!-- Ubicacion -->
+    <div
+      v-show="bookState.isElectronic === 'no'"
+      class="flex items-center mb-5"
+    >
+      <label for="location" class="w-1/4">Ubicación</label>
+      <input
+        type="text"
+        name="location"
+        id="location"
+        placeholder="Ubicación"
+        class="form-control w-2/4"
+        :value="bookState.location"
+      >
     </div>
 
     <!-- Archivo -->
@@ -149,30 +166,6 @@
         placeholder="Agregar archivo"
         class="form-control w-2/4"
       />
-    </div>
-
-    <!-- Ubicacion -->
-    <div
-      v-show="bookState.isElectronic === 'no'"
-      class="flex items-center mb-5"
-    >
-      <label for="location" class="w-1/4">Ubicación</label>
-      <input
-        type="text"
-        name="location"
-        id="location"
-        placeholder="Ubicación"
-        class="form-control w-2/4"
-        v-model="bookState.location"
-      >
-    </div>
-
-    <!-- Imagen -->
-    <div class="flex items-center mb-5">
-      <label class="w-1/4" for="image">Imagen</label>
-      <div class="w-2/4">
-        <InputImageWithPreview name="image" />
-      </div>
     </div>
 
     <div class="text-right mt-6">
@@ -199,11 +192,15 @@ export default {
   props: {
     csrfToken: {
       type: String,
-      required: true,
+      required: true
     },
     categories: {
       type: Array,
-      default: () => [],
+      default: () => []
+    },
+    book: {
+      type: Object,
+      required: true
     },
     oldData: {
       type: Object,
@@ -211,24 +208,24 @@ export default {
     },
   },
   setup(props) {
-    const { oldData } = props;
-    const old = useOldInput(oldData);
     const showSelectCategoryModal = ref(false);
+    const { book, oldData } = props;
+    const old = useOldInput(oldData);
 
-    const currentCategoriesIds = old('categories', []);
+    const currentCategoriesIds = old('categories', book.categories.map(cate => cate.id));
 
     const bookState = reactive({
       selectedCategories: props.categories.filter(cate =>  currentCategoriesIds.some(id => Number(id) === cate.id) ),
-      selectedCategoriesText: computed(() => bookState.selectedCategories.map(c => c.name).join(', ')),
-      title: old('title', ''),
-      description: old('description', ''),
-      author: old('author', ''),
-      numOfPages: old('num_of_pages', ''),
-      publishedAt: old('published_at', ''),
-      isFree: old('is_free', ''),
-      price: old('price', ''),
-      isElectronic: old('is_electronic', ''),
-      location: old('location', ''),
+      selectedCategoriesText: computed(() => bookState.selectedCategories.map(cate => cate.name).join(', ')),
+      title: old('title', book.title),
+      description: old('description', book.description),
+      author: old('author', book.author),
+      numOfPages: old('num_of_pages', book.num_of_pages),
+      publishedAt: old('published_at', book.published_at),
+      isFree: old('is_free', book.is_free ? 'si' : 'no'),
+      price: old('price', book.price),
+      isElectronic: old('is_electronic', book.isElectronic ? 'si' : 'no'),
+      location: old('location', book.location),
     });
 
     function onCategoriesSelected(categories) {

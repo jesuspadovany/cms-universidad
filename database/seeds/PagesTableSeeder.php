@@ -20,7 +20,7 @@ class PagesTableSeeder extends Seeder
                 'name' => $name = 'biblioteca',
                 'slug' => Str::slug($name),
                 'content' => '',
-                'image' => '/images/default-header.jpeg'
+                'image' => '/images/biblioteca.png'
             ],
             [
                 'name' => $name = 'cursos',
@@ -32,7 +32,7 @@ class PagesTableSeeder extends Seeder
                 'name' => $name = 'institucional',
                 'slug' => Str::slug($name),
                 'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
-                'image' => '/images/default-header.jpeg'
+                'image' => '/images/fachada.jpeg'
             ],
             [
                 'name' => $name = 'equipo',

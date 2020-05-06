@@ -35,18 +35,24 @@
 
 <script>
 import { ref } from '@vue/composition-api';
-import { useRangeFromOneToN } from '@/composables/useRangeFromOneToN';
 
 export default {
   props: {
-    categories: Array,
+    categories: {
+      type: Array,
+      default: () => [],
+    },
+    currentCategories: {
+      type: Array,
+      default: () => [],
+    },
   },
   setup(props) {
-    const selectedCategories = ref([]);
+    const selectedCategories = ref(props.categories.filter(cate =>  props.currentCategories.some(_cate => _cate.id === cate.id) ));
 
     return {
       selectedCategories
-    }
+    };
   }
 }
 </script>
