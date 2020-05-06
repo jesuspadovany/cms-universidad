@@ -1,5 +1,31 @@
 @tailwind base;
 
+@font-face {
+    font-family: 'Belgrano';
+    src: url('../fonts/Belgrano-Regular.eot');
+    src: url('../fonts/Belgrano-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Belgrano-Regular.woff2') format('woff2'),
+        url('../fonts/Belgrano-Regular.woff') format('woff'),
+        url('../fonts/Belgrano-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Belgrano';
+    src: url('../fonts/Belgrano-Regular_1.eot');
+    src: url('../fonts/Belgrano-Regular_1.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Belgrano-Regular_1.woff2') format('woff2'),
+        url('../fonts/Belgrano-Regular_1.woff') format('woff'),
+        url('../fonts/Belgrano-Regular_1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Belgrano';
+}
+
 h1 {
     @apply .text-6xl;
 }
