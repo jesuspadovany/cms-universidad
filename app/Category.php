@@ -9,6 +9,12 @@ class Category extends Model
 {
     protected $guarded = [];
 
+    //-------------------- Relationships --------------------//
+    public function books()
+    {
+        return $this->belongsToMany(Book::class);
+    }
+
     //------------------- Scopes -------------------//
     public function scopeWhereModuleIsLibrary($query)
     {
