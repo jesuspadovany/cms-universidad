@@ -1,12 +1,12 @@
 <template>
   <nav class="relative z-20 flex items-center px-3 h-16 bg-primary text-white shadow-md">
-    <a :href="url('')" class="text-xl">el Rojas</a>
+    <a :href="url('')" class="text-xl hover:no-underline">el Rojas</a>
 
     <div class="flex items-center ml-auto">
       <div v-show="!showSearchInput">
-        <a :href="url('agenda')" class="mr-2 font-semibold">Agenda</a>
-        <a :href="url('cursos')" class="mr-2 font-semibold">Cursos</a>
-        <a :href="url('biblioteca')" class="font-semibold">Biblioteca</a>
+        <a :href="url('agenda')" class="mr-4 font-semibold hover:no-underline">Agenda</a>
+        <a :href="url('cursos')" class="mr-4 font-semibold hover:no-underline">Cursos</a>
+        <a :href="url('biblioteca')" class="font-semibold hover:no-underline">Biblioteca</a>
       </div>
 
       <SearchInput

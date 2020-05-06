@@ -2,66 +2,57 @@
   <div class="bg-primary">
     <div class="container mx-auto flex px-10 py-10">
       <!-- Primera columna -->
-      <div class="flex-grow-0 w-1/3 px-2">
+      <div class="flex-grow-0 w-1/3 px-6">
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
             <a href="#" class="font-semibold text-white">Agenda</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Artes escénicas</a>
+            <a href="#" class="hover:text-white">Arte</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Artes visuales y nueva Tec.</a>
+            <a href="#" class="hover:text-white">Ciencia</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Ciencia y cultura sostenible</a>
+            <a href="#" class="hover:text-white">Cine y video</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Cine cosmo UBA</a>
+            <a href="#" class="hover:text-white">Comunicación</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Cultura urbana</a>
+            <a href="#" class="hover:text-white">Cultura sotenible</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">EscenaLab</a>
+            <a href="#" class="hover:text-white">Danza</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Letras y pensamientos</a>
+            <a href="#" class="hover:text-white">Diseño</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Orquesta de la UBA</a>
+            <a href="#" class="hover:text-white">Fotografía</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Rector Ricardo Rojas</a>
+            <a href="#" class="hover:text-white">Música</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Institucional</a>
+            <a href="#" class="hover:text-white">Teatro</a>
           </li>
         </ul>
       </div>
       <!-- Segunda columna -->
-      <div class="flex-grow-0 w-1/3 px-2">
+      <div class="flex-grow-0 w-1/3 px-6">
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a href="#" class="font-semibold text-white">Contenido</a>
+            <a href="#" class="font-semibold text-white">Cursos</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Publicaciones</a>
+            <a href="#" class="hover:text-white">Niños</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Programcación digital</a>
+            <a href="#" class="hover:text-white">Mayores de 18</a>
           </li>
           <li>
-            <a href="#" class="hover:text-white">Rojas fuera de rojas</a>
-          </li>
-          <li>
-            <a href="#" class="hover:text-white">Noches rojas en radio UBA</a>
-          </li>
-          <li>
-            <a href="#" class="hover:text-white">Entrevistas</a>
-          </li>
-          <li>
-            <a href="#" class="hover:text-white">Nautilus sonora</a>
+            <a href="#" class="hover:text-white">Adultos mayores</a>
           </li>
         </ul>
 
@@ -69,20 +60,12 @@
 
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a :href="url('equipo')" class="font-semibold text-white">Equipo</a>
-          </li>
-        </ul>
-
-        <div class="my-3 border border-white"></div>
-
-        <ul class="list-reset text-lg text-gray-200">
-          <li class="mb-1">
-            <a :href="url('prensa')" class="font-semibold text-white">Prensa</a>
+            <a href="#" class="font-semibold text-white">Biblioteca</a>
           </li>
         </ul>
       </div>
       <!-- Tercera columna -->
-      <div class="flex-grow-0 w-1/3 px-2">
+      <div class="flex-grow-0 w-1/3 px-6">
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
             <a :href="url('institucional')" class="font-semibold text-white">Institucional</a>
@@ -93,7 +76,7 @@
 
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a href="#" class="font-semibold text-white">Terminos y condiciones</a>
+            <a href="#" class="font-semibold text-white">Contacto</a>
           </li>
         </ul>
 
@@ -101,7 +84,7 @@
 
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a :href="url('contacto')" class="font-semibold text-white">Contacto</a>
+            <a :href="url('contacto')" class="font-semibold text-white">Radio</a>
           </li>
         </ul>
       </div>
