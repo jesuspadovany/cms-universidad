@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-<hero-section bg-image="{{ $page->image }}"></hero-section>
+<hero-section bg-image="{{ $page->image }}" bg-size="100% 100%"></hero-section>
 @endsection
 
 @section('content')

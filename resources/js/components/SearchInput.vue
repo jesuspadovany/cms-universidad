@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <button
-      v-if="!inputShowned"
+      v-if="!inputShown"
       type="button"
       class="focus:outline-none"
       @click="$emit('showInput')"
@@ -9,15 +9,16 @@
       <i class="fa fa-search"></i>
     </button>
 
-    <template v-if="inputShowned">
+    <template v-if="inputShown">
       <input
         type="text"
-        class="pl-3 pr-6 py-1 leading-none rounded focus:outline-none text-black"
+        class="w-64 pl-3 pr-6 py-2 leading-none rounded-md focus:outline-none border-2 bg-primary text-white text-sm"
+        placeholder="Buscar"
         ref="inputEl"
         :value="value"
         @input="$emit('input', $event.target.value)"
       >
-      <span class="absolute inset-y-0 right-0 inline-flex items-center justify-center text-gray-800">
+      <span class="absolute inset-y-0 right-0 inline-flex items-center justify-center text-white">
         <button
           type="button"
           class="px-2 focus:outline-none"
@@ -39,7 +40,7 @@ export default {
       type: String,
       default: '',
     },
-    inputShowned: {
+    inputShown: {
       type: Boolean
     }
   },
@@ -47,7 +48,7 @@ export default {
     const inputEl = ref(null);
 
     watchEffect(() => {
-      if (!props.inputShowned) {
+      if (!props.inputShown) {
         return;
       }
 
@@ -58,3 +59,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+::placeholder {
+  @apply text-white;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="relative z-20 flex items-center p-3 bg-primary text-white shadow-md">
+  <nav class="relative z-20 flex items-center px-3 h-16 bg-primary text-white shadow-md">
     <a :href="url('')" class="text-xl">el Rojas</a>
 
     <div class="flex items-center ml-auto">
@@ -11,7 +11,7 @@
 
       <SearchInput
         class="mx-4"
-        :input-showned="showSearchInput"
+        :input-shown="showSearchInput"
         v-model="searchTerm"
         @hideInput="showSearchInput = false"
         @showInput="showSearchInput = true"
