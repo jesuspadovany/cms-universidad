@@ -31,6 +31,12 @@ class Book extends Model
             : $image;
     }
 
+    //------------------- Accessors -------------------//
+    public function getButtonTextAttribute()
+    {
+        return $this->attributes['is_free'] ? 'Descargar' : 'Comprar';
+    }
+
     public function setFileAttribute($file)
     {
         $this->attributes['file'] = $file instanceof UploadedFile

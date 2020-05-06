@@ -21,16 +21,20 @@
     {{-- Categorias --}}
     <p>
         @foreach ($book->categories as $cat)
-            <a href="#" class="capitalize text-primary">
+            <a href="#" class="capitalize font-semibold text-primary">
                 {{ $cat->name . (! $loop->last ? ', ' : '') }}
             </a>
         @endforeach
     </p>
 
     {{-- Sinopsis --}}
-    <p class="mt-4">
+    <p class="my-4">
         <b>Sinopsis:</b>
         {{ $book->description }}
     </p>
+
+    <a href="#" class="btn btn-primary-outline py-1">
+        {{ $book->button_text }}
+    </a>
 </section>
 @endsection

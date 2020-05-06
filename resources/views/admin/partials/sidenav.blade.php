@@ -63,7 +63,7 @@
                 href="{{ route('admin.library.index') }}"
                 class="
                     sidenav__link
-                    {{ getMenuLinkBgColor(['admin.library.index', 'admin.library.create', 'admin.library.slider', 'admin.library.changePageImage']) }}
+                    {{ getMenuLinkBgColor(['admin.library.index', 'admin.library.create', 'admin.library.slider', 'admin.library.changePageImage', 'admin.library.edit']) }}
                 "
             >
 				<span class="inline-block mr-2 w-10 text-center">
