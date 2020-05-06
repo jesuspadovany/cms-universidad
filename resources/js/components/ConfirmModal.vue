@@ -1,7 +1,7 @@
 <template>
   <div class="modal fixed inset-0 z-50 flex items-center justify-center">
     <div class="modal-dialog rounded-md bg-white">
-      <h2 class="p-2 border-b border-gray-400 text-2xl text-center">¿Está seguro?</h2>
+      <h2 class="p-2 border-b border-gray-400 text-2xl text-center text-gray-800">¿Está seguro?</h2>
 
       <div class="flex p-3">
         <button

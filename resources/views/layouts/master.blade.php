@@ -29,7 +29,7 @@
             @yield('content')
         </div>
 
-        <footer class="footer text-white">
+        <footer class="footer text-white bg-black">
             <div class="container mx-auto p-24">
                 <div class="flex">
                     <div class="w-1/2">

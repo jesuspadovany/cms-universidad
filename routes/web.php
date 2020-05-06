@@ -12,7 +12,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::prefix('/cursos')->name('courses.')->group(function() {
-	Route::get('/', [CoursesController::class, 'index'])->name('index');
+    Route::get('/', [CoursesController::class, 'index'])->name('index');
+    Route::get('/detalle/{id}', [CoursesController::class, 'cursos'])->name('detalle');
 });
 
 Route::prefix('/agenda')->name('schedule.')->group(function() {

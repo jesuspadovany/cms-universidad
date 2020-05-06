@@ -13,8 +13,8 @@
         class="mx-4"
         :input-shown="showSearchInput"
         v-model="searchTerm"
-        @hideInput="showSearchInput = false"
-        @showInput="showSearchInput = true"
+        @hideInput="showSearchInput = false , showExpandableSearch = false"
+        @showInput="showSearchInput = true , showExpandableSearch = true"
       />
 
       <button
@@ -25,6 +25,10 @@
         <i class="fa fa-lg" :class="showExpandableMenu ? 'fa-times' : 'fa-bars'"></i>
       </button>
     </div>
+
+    <transition name="scale-y">
+      <ExpandableSearch class="expandable-search absolute z-10" v-show="showExpandableSearch" />
+    </transition>
 
     <transition name="scale-y">
       <ExpandableMenu class="expandable-menu absolute z-10" v-show="showExpandableMenu" />
@@ -42,11 +46,13 @@ export default {
     const { searchTerm } = useNavbarSearch();
     const url = useUrlGenerator();
     const showSearchInput = ref(false);
+    const showExpandableSearch = ref(false);
     const showExpandableMenu = ref(false);
 
     return {
       showSearchInput,
       showExpandableMenu,
+      showExpandableSearch,
       url,
       searchTerm,
     }
@@ -67,6 +73,13 @@ function useNavbarSearch(debounceTime = 300) {
 </script>
 
 <style scoped>
+.expandable-search{
+  top: 100%;
+  left: 0;
+  right: 0;
+  min-height: 550px;
+}
+
 .expandable-menu {
   top: 100%;
   left: 0;
