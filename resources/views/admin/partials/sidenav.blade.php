@@ -102,38 +102,16 @@
 		</li>
 		<li>
             <a
-                href="{{ route('admin.pages.show', ['page' => 'prensa']) }}"
+                href="{{ route('admin.pages.show', ['page' => 'contacto']) }}"
                 class="
                     sidenav__link
-                    {{ getMenuLinkBgColor(['admin/paginas/prensa', 'admin/paginas/prensa/editar', 'admin/paginas/prensa/imagen/editar']) }}
+                    {{ getMenuLinkBgColor(['admin/paginas/contacto', 'admin/paginas/contacto/editar', 'admin/paginas/contacto/imagen/editar']) }}
                 "
             >
-				<span class="inline-block mr-2 w-10 text-center">
-					<i class="fas fa-video fa-lg"></i>
-				</span>
-				Prensa
-			</a>
-		</li>
-		<li>
-			<a href="#" class="sidenav__link">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-clipboard-list fa-lg"></i>
 				</span>
 				Contacto
-			</a>
-		</li>
-		<li>
-            <a
-                href="{{ route('admin.pages.show', ['page' => 'equipo']) }}"
-                class="
-                    sidenav__link
-                    {{ getMenuLinkBgColor(['admin/paginas/equipo', 'admin/paginas/equipo/editar', 'admin/paginas/equipo/imagen/editar']) }}
-                "
-            >
-				<span class="inline-block mr-2 w-10 text-center">
-					<i class="fas fa-users fa-lg"></i>
-				</span>
-				Equipo
 			</a>
 		</li>
 		<li>
@@ -142,14 +120,6 @@
 					<i class="fas fa-home fa-lg"></i>
 				</span>
 				Pie de página
-			</a>
-		</li>
-		<li>
-			<a href="#" class="sidenav__link">
-				<span class="inline-block mr-2 w-10 text-center">
-					<i class="fas fa-home fa-lg"></i>
-				</span>
-				Categoría
 			</a>
 		</li>
 		<li>

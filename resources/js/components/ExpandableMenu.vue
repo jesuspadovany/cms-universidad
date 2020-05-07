@@ -5,7 +5,7 @@
       <div class="flex-grow-0 w-1/3 px-6">
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a href="#" class="font-semibold text-white">Agenda</a>
+            <a :href="url('agenda')" class="font-semibold text-white">Agenda</a>
           </li>
           <li>
             <a href="#" class="hover:text-white">Arte</a>
@@ -43,7 +43,7 @@
       <div class="flex-grow-0 w-1/3 px-6">
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a href="#" class="font-semibold text-white">Cursos</a>
+            <a :href="url('cursos')" class="font-semibold text-white">Cursos</a>
           </li>
           <li>
             <a href="#" class="hover:text-white">Niños</a>
@@ -60,7 +60,7 @@
 
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a href="#" class="font-semibold text-white">Biblioteca</a>
+            <a :href="url('biblioteca')" class="font-semibold text-white">Biblioteca</a>
           </li>
         </ul>
       </div>
@@ -76,7 +76,7 @@
 
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a href="#" class="font-semibold text-white">Contacto</a>
+            <a :href="url('contacto')" class="font-semibold text-white">Contacto</a>
           </li>
         </ul>
 
@@ -84,7 +84,7 @@
 
         <ul class="list-reset text-lg text-gray-200">
           <li class="mb-1">
-            <a :href="url('contacto')" class="font-semibold text-white">Radio</a>
+            <a href="http://www.uba.ar/radiouba/" target="__blank" class="font-semibold text-white">Radio</a>
           </li>
         </ul>
       </div>

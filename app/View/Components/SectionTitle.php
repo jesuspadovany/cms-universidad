@@ -9,7 +9,7 @@ class SectionTitle extends Component
     public $title;
     public $icon;
 
-    public function __construct($title, $icon = '')
+    public function __construct($title = '', $icon = '')
     {
         $this->title = $title;
         $this->icon = $icon;

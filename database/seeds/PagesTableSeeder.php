@@ -35,16 +35,10 @@ class PagesTableSeeder extends Seeder
                 'image' => '/images/fachada.jpeg'
             ],
             [
-                'name' => $name = 'equipo',
+                'name' => $name = 'contacto',
                 'slug' => Str::slug($name),
                 'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
-                'image' => '/images/default-header.jpeg'
-            ],
-            [
-                'name' => $name = 'prensa',
-                'slug' => Str::slug($name),
-                'content' => file_get_contents("{$htmlBasePath}{$name}.html"),
-                'image' => '/images/default-header.jpeg'
+                'image' => '/images/contacto.png'
             ],
         ]);
     }

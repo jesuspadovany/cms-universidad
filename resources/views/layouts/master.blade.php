@@ -44,11 +44,26 @@
                         <h2 class="mb-4 text-5xl text-primary">Centro Cultural Rojas</h2>
                         <p class="text-2xl">
                             C104AAF / CABA Argentina / +54 11 4953-5405 <br>
-                            Seguinos y suscribete al Newsletter <br>
-                            <button type="button" class="">
-                                Suscribete al Newsletter
-                            </button>
+                            Seguinos y suscribete al Newsletter
                         </p>
+                        <div class="flex items-center mt-2">
+                            <a href="#" class="mr-2">
+                                <img src="{{ asset('images/facebook.png') }}" alt="facebook">
+                            </a>
+                            <a href="#" class="mr-2">
+                                <img src="{{ asset('images/twitter.png') }}" alt="twitter">
+                            </a>
+                            <a href="#" class="mr-2">
+                                <img src="{{ asset('images/play.png') }}" alt="play">
+                            </a>
+                            <a href="#" class="mr-2">
+                                <img src="{{ asset('images/instagram.png') }}" alt="instagram">
+                            </a>
+                            <button type="button" class="px-3 py-2 rounded-md border-2 border-white text-sm">
+                                Suscribete al Newsletter
+                                <i class="fas fa-envelope ml-2"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

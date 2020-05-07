@@ -60,7 +60,7 @@ export default {
 <style scoped>
 .slider-image {
   background-repeat: no-repeat;;
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center center;
 }
 </style>

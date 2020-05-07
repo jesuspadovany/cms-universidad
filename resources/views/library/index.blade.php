@@ -6,8 +6,16 @@
 
 @section('content')
 <section class="container mx-auto px-4 py-6">
-    <x-section-title :title="$sectionTitle" icon="fas fa-book" class="mb-6 text-primary">
-        {{-- Filtros --}}
+    {{-- Título --}}
+	<x-section-title class="mb-6 text-primary">
+        <x-slot name="titleslot">
+            <h2 class="flex items-center text-5xl">
+                <img src="{{ asset('images/library-icon-red.png') }}" alt="Biblioteca" class="inline-block w-12 h-12 mr-4">
+                Biblioteca
+            </h2>
+        </x-slot>
+
+		{{-- Filtros --}}
         <filters :active='@json($filtered)'>
             @foreach ($categories as $category)
                 <li>
@@ -20,7 +28,7 @@
                 </li>
             @endforeach
         </filters>
-    </x-section-title>
+	</x-section-title>
 
     {{-- Cards --}}
     <div class="flex flex-wrap">
@@ -33,12 +41,12 @@
         @endforelse --}}
         @foreach (range(1, 10) as $i)
         <div class="w-1/2 p-2">
-            <div class="bg-gray-300 rounded-lg overflow-hidden">
+            <div class="bg-gray-300 rounded-lg overflow-hidden" style="box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.38);}">
             <!-- Body -->
             <div class="flex h-56">
               <!-- Image -->
               <div class="flex-shrink-0 flex w-40 p-3 bg-gray-400">
-                <a href="#" class="block w-full h-full">
+                <a href="{{ route('library.show', ['slug' => 'titulo', 'book' => 1]) }}" class="block w-full h-full">
                   <img src="{{ asset('images/book-default-image.png') }}" class="block h-full w-full" style="box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);">
                 </a>
               </div>
@@ -47,7 +55,7 @@
               <div class="p-4 w-full text-sm">
                 <!-- Nombre del libro -->
                 <h3 class="mb-3 leading-none capitalize text-2xl">
-                  <a href="#">
+                  <a href="{{ route('library.show', ['slug' => 'titulo', 'book' => 1]) }}">
                     Somos nuestro cerebro
                   </a>
                 </h3>
