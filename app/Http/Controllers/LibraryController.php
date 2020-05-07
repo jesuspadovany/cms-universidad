@@ -15,7 +15,7 @@ class LibraryController extends Controller
 
     public function indexByCategory(Category $category)
     {
-        $sectionTitle = 'Biblioteca / ' . ucfirst($category->name);
+        $sectionTitle = 'Biblioteca - ' . ucfirst($category->name);
 
         return $this->indexView($category->books()->paginate(10), $sectionTitle, true);
     }

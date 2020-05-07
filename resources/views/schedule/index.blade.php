@@ -17,7 +17,7 @@
 	<div class="grid grid-cols-4 gap-6 mb-6">
 		@foreach (range(1, 4) as $i)
 			<div>
-				<img src="https://via.placeholder.com/250x170" class="inline-block h-48 w-full">
+            <img src="{{ asset('images/agenda-default-image.png') }}" class="inline-block h-48 w-full">
 				<div class="flex flex-col h-48 bg-gray-800 text-white text-sm">
 					<div class="flex flex-col h-full px-4 py-3">
 						<h3 class="text-2xl">Volver a casa</h3>

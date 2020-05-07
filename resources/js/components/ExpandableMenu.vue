@@ -105,3 +105,9 @@ export default {
   }
 }
 </script>
+
+<style>
+a:hover {
+  @apply .no-underline;
+}
+</style>
