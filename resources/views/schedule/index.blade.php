@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-<hero-section bg-image="{{ asset('images/agenda.png') }}" bg-size="100% 100%"></hero-section>
+<hero-section bg-image="{{ asset('images/agenda.jpg') }}" bg-size="100% 100%"></hero-section>
 @endsection
 
 @section('content')

@@ -2,7 +2,7 @@
 
 @section('header')
     {{-- <hero-section bg-image="{{ asset($cursos[0]->imagen) }}"></hero-section> --}}
-    <hero-section bg-image="{{ asset('images/curso-show.png') }}" bg-size="100% 100%"></hero-section>
+    <hero-section bg-image="{{ asset('images/curso-show.jpg') }}" bg-size="100% 100%"></hero-section>
 @endsection
 
 @section('content')
