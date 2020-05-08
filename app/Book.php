@@ -17,10 +17,19 @@ class Book extends Model
         'is_in_slider' => 'boolean'
     ];
 
+    protected $dates = [
+        'published_at'
+    ];
+
     //------------------- Relationships -------------------//
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function card()
+    {
+        return $this->hasOne(BookCard::class);
     }
 
     //------------------- Mutators -------------------//
@@ -29,12 +38,6 @@ class Book extends Model
         $this->attributes['image'] = $image instanceof UploadedFile
             ? Storage::url($image->store(static::BOOKS_PATH))
             : $image;
-    }
-
-    //------------------- Accessors -------------------//
-    public function getButtonTextAttribute()
-    {
-        return $this->attributes['is_free'] ? 'Descargar' : 'Comprar';
     }
 
     public function setFileAttribute($file)
@@ -47,6 +50,12 @@ class Book extends Model
     public function setPriceAttribute($price)
     {
         $this->attributes['price'] = is_null($price) ? 0 : $price;
+    }
+
+    //------------------- Accessors -------------------//
+    public function getButtonTextAttribute()
+    {
+        return $this->attributes['is_free'] ? 'Descargar' : 'Comprar';
     }
 
     //------------------- Static methdos -------------------//

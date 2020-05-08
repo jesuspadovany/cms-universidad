@@ -15,7 +15,7 @@ class BooksTableSeeder extends Seeder
         Book::create([
             'title' => 'titulo',
             'slug' => 'titulo',
-            'description' => 'descripcion',
+            'synopsis' => 'sinopsis',
             'is_free' => 1,
             'price' => 0,
             'author' => 'Pedro perez',

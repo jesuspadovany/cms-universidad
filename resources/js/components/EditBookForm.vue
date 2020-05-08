@@ -1,5 +1,5 @@
 <template>
-    <form :action="url(`admin/biblioteca/${book.id}`)" method="POST" enctype="multipart/form-data">
+  <form :action="url(`admin/biblioteca/${book.id}`)" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" :value="csrfToken">
     <input type="hidden" name="_method" value="PUT">
 
@@ -16,17 +16,17 @@
       >
     </div>
 
-    <!-- Descripción -->
+    <!-- Sinopsis -->
     <div class="flex items-center mb-5">
-      <label for="description" class="w-1/4">Descripción</label>
+      <label for="synopsis" class="w-1/4">Sinopsis</label>
       <textarea
         type="text"
-        name="description"
-        id="description"
-        placeholder="Descripción"
+        name="synopsis"
+        id="synopsis"
+        placeholder="Sinopsis"
         rows="7"
         class="form-control w-2/4"
-        v-model="bookState.description"
+        v-model="bookState.synopsis"
       ></textarea>
     </div>
 
@@ -218,7 +218,7 @@ export default {
       selectedCategories: props.categories.filter(cate =>  currentCategoriesIds.some(id => Number(id) === cate.id) ),
       selectedCategoriesText: computed(() => bookState.selectedCategories.map(cate => cate.name).join(', ')),
       title: old('title', book.title),
-      description: old('description', book.description),
+      synopsis: old('synopsis', book.synopsis),
       author: old('author', book.author),
       numOfPages: old('num_of_pages', book.num_of_pages),
       publishedAt: old('published_at', book.published_at),

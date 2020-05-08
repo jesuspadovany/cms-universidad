@@ -36,9 +36,22 @@ class LibraryController extends Controller
 
         $book->categories()->attach($storeBookRequest->categories);
 
+        $book->card()->create([
+            'long_description' => $book->synopsis,
+        ]);
+
         return redirect()->route('admin.library.index')->with('alert', [
             'type' => 'success',
             'message' => 'El libro ha sido agregado'
+        ]);
+    }
+
+    public function show(Book $book)
+    {
+        $book->load('card');
+
+        return view('admin.library.show', [
+            'book' => $book,
         ]);
     }
 
@@ -126,7 +139,16 @@ class LibraryController extends Controller
         ]);
     }
 
-    public function getOldInputDataOrEmptyObject()
+    public function editCard(Book $book)
+    {
+        $book->load('card');
+
+        return view('admin.library.edit-card', [
+            'book' => $book,
+        ]);
+    }
+
+    protected function getOldInputDataOrEmptyObject()
     {
         return empty(request()->old()) ? new \StdClass : request()->old();
     }

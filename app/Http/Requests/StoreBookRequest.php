@@ -38,7 +38,7 @@ class StoreBookRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['max:255'],
-            'description' => ['required', 'string', 'max:1000'],
+            'synopsis' => ['required', 'string', 'max:1000'],
             'is_free' => ['required'],
             'price' => [Rule::requiredIf(! $this->is_free), 'nullable', 'numeric', 'min:1'],
             'author' => ['required', 'string', 'max:255'],
@@ -57,7 +57,7 @@ class StoreBookRequest extends FormRequest
     {
         return [
             'title' => 'título',
-            'description' => 'descripción',
+            'synopsis' => 'sinopsis',
             'price' => 'precio',
             'author' => 'autor',
             'num_of_pages' => 'número de páginas',

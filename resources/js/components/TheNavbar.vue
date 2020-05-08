@@ -75,9 +75,10 @@ function useNavbarSearch(debounceTime = 300) {
 <style scoped>
 .navbar {
   @apply .relative .z-20 .flex .items-center .px-10 .h-16 .bg-primary .text-white .shadow-md;
-  background-image: url('/images/logo-navbar.png');
+  background-image: url('/images/logo-navbar.svg');
   background-repeat: no-repeat;
   background-size: auto 65px;
+  background-position: -27px;
 }
 
 .expandable-search{

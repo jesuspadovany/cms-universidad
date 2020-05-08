@@ -46,7 +46,10 @@
             <div class="flex h-56">
               <!-- Image -->
               <div class="flex-shrink-0 flex w-40 p-3 bg-gray-400">
-                <a href="{{ route('library.show', ['slug' => 'titulo', 'book' => 1]) }}" class="block w-full h-full">
+                @php
+                    $book = App\Book::get()->first();
+                @endphp
+                <a href="{{ route('library.show', ['slug' => $book->slug, 'book' => $book->id]) }}" class="block w-full h-full">
                   <img src="{{ asset('images/book-default-image.png') }}" class="block h-full w-full" style="box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);">
                 </a>
               </div>
@@ -55,7 +58,7 @@
               <div class="p-4 w-full text-sm">
                 <!-- Nombre del libro -->
                 <h3 class="mb-3 leading-none capitalize text-2xl">
-                  <a href="{{ route('library.show', ['slug' => 'titulo', 'book' => 1]) }}">
+                  <a href="{{ route('library.show', ['slug' => $book->slug, 'book' => $book->id]) }}">
                     Somos nuestro cerebro
                   </a>
                 </h3>

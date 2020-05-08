@@ -15,17 +15,17 @@
       >
     </div>
 
-    <!-- Descripción -->
+    <!-- Sinopsis -->
     <div class="flex items-center mb-5">
-      <label for="description" class="w-1/4">Descripción</label>
+      <label for="synopsis" class="w-1/4">Sinopsis</label>
       <textarea
         type="text"
-        name="description"
-        id="description"
-        placeholder="Descripción"
+        name="synopsis"
+        id="synopsis"
+        placeholder="Sinopsis"
         rows="7"
         class="form-control w-2/4"
-        v-model="bookState.description"
+        v-model="bookState.synopsis"
       ></textarea>
     </div>
 
@@ -221,7 +221,7 @@ export default {
       selectedCategories: props.categories.filter(cate =>  currentCategoriesIds.some(id => Number(id) === cate.id) ),
       selectedCategoriesText: computed(() => bookState.selectedCategories.map(c => c.name).join(', ')),
       title: old('title', ''),
-      description: old('description', ''),
+      synopsis: old('synopsis', ''),
       author: old('author', ''),
       numOfPages: old('num_of_pages', ''),
       publishedAt: old('published_at', ''),

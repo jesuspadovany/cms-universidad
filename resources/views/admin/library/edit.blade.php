@@ -1,5 +1,7 @@
 @extends('admin.layouts.master')
 
+@section('section-title', 'Biblioteca - Editar libro')
+
 @section('content')
 <section class="p-4">
     {{-- Errores de validación --}}

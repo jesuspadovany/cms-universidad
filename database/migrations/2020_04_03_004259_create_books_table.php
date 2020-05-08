@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->index();
-            $table->text('description', 1000);
+            $table->text('synopsis', 1000);
             $table->boolean('is_free');
             $table->decimal('price', 12, 2);
             $table->string('author');

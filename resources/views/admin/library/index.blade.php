@@ -75,8 +75,15 @@
                     <td>{{ $book->author }}</td>
                     <td>{{ $book->isElectronic ? 'Si' : 'No' }}</td>
                     <td width="150" class="text-right">
+                        {{-- Link de ver detalles --}}
+                        <a href="{{ route('admin.library.show', $book) }}" class="mr-2 text-green-500">
+                            <i class="fas fa-eye"></i>
+                        </a>
+
                         {{-- Link de editar --}}
-                        <a href="{{ route('admin.library.edit', $book) }}" class="mr-3 text-blue-600">Editar</a>
+                        <a href="{{ route('admin.library.edit', $book) }}" class="mr-2 text-blue-600" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </a>
 
                         {{-- Form de eliminar --}}
                         <form
@@ -95,11 +102,12 @@
                             @accept="$refs['form-{{ $loop->index }}'].submit()"
                         >
                             <a
-                                href="#!"
-                                class="text-red-500"
+                                href="{{ route('admin.library.delete', $book) }}"
+                                class="text-red-700"
+                                title="Eliminar"
                                 @click.prevent="show"
                             >
-                                Eliminar
+                                <i class="fas fa-trash"></i>
                             </a>
                         </confirm-modal-trigger>
                     </td>
