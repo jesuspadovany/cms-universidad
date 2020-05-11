@@ -13,17 +13,18 @@ class CoursesController extends Controller
     public function index()
     {
     	return view('courses.index', [
-             'page' => Page::where('name', 'cursos')->first(),
-             'cursos' => Course::orderBy('nombre')->get(),
-             'categories' => Category::getCoursesCategories()
+            'page' => Page::where('name', 'cursos')->first(),
+            'courses' => Course::with(['card', 'categories'])->orderBy('id', 'desc')->get(),
+            'categories' => Category::getCoursesCategories()
         ]);
     }
 
-    public function cursos($id)
+    public function show(Course $course)
     {
+        return $course;
         return view('courses.detalle', [
             'categories' => Category::whereModuleIsLibrary()->get(),
-            'cursos' => DB::table('courses')->where('id' , $id)->get()
+            'curso' => $curso
         ]);
     }
 }

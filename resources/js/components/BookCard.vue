@@ -76,10 +76,4 @@ export default {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);
   @apply .inline .h-full .w-full;
 }
-
-.sinopsis {
-  line-height: 1.35rem;
-  max-height: 4.05rem;
-  overflow: hidden;
-}
 </style>

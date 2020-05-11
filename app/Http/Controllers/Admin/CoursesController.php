@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Page;
 use App\Course;
+use App\Category;
+use App\CourseCard;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCoursesRequest;
 use App\Http\Requests\StorePageImageRequest;
-use App\Page;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 
 class CoursesController extends Controller
 {
@@ -28,20 +29,22 @@ class CoursesController extends Controller
         $course = new Course;
         $course->ubicacion = $request->ubicacion;
         $course->nombre = $request->nombre;
-        $course->descripcion_curso = $request->descripcion_curso;
-        $course->descipcion = $request->descripcion;
+        $course->slug = $request->slug;
+        $course->descripcion = $request->descripcion;
         $course->precio = $request->precio;
         $course->horarios = $request->horario;
         $course->imagen = $request->file('image');
         $course->material = $request->file('material');
         $course->profesor = $request->profesor;
         $course->anfitrion = $request->anfitrion;
-        $course->clase = $request->clase;
+        $course->tipo = $request->tipo;
         $course->duracion = $request->duracion;
 
         $course->save();
 
         $course->categories()->attach($request->categories);
+
+        CourseCard::createFromCourse($course);
 
         return redirect()->route('admin.courses.index')->with('alert', [
             'type' => 'success',
@@ -104,13 +107,13 @@ class CoursesController extends Controller
         $course->update([
             'ubicacion' => $request->ubicacion,
             'nombre' => $request->nombre,
-            'descripcion_curso' => $request->descripcion_curso,
-            'descipcion' => $request->descripcion,
+            'slug' => $request->slug,
+            'descripcion' => $request->descripcion,
             'precio' => $request->precio,
             'horarios' => $request->horario,
             'profesor' => $request->profesor,
             'anfitrion' => $request->anfitrion,
-            'clase' => $request->clase,
+            'tipo' => $request->tipo,
             'duracion' => $request->duracion,
         ]);
 

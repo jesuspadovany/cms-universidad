@@ -10,10 +10,10 @@
         @endforeach
     </div>
 
-    <create-course
+    <create-course-form
         class="p-6"
         :categories='@json($categories)'
         :csrf-token='@json(csrf_token())'
-    ></create-course>
+    ></create-course-form>
 </section>
 @endsection

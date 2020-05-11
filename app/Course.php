@@ -8,29 +8,49 @@ use Illuminate\Support\Facades\Storage;
 
 class Course extends Model
 {
+    public const IMAGE_PATH = 'public/cursos';
+    public const DOC_PATH = 'public/cursos';
+
+    protected $guarded = [];
+
+    protected $appends = [
+        'is_free',
+    ];
+
     //--------------------- Relaciones ---------------------//
     public function categories()
     {
         return $this->belongsToMany(Category::class);
     }
 
-
-    public const IMAGE_PATH = 'public/cursos';
-    public const DOC_PATH = 'public/cursos';
-    protected $guarded = [];
+    public function card()
+    {
+        return $this->hasOne(CourseCard::class);
+    }
 
     //------------------- Mutators -------------------//
-    public function setImagenAttribute($imagen)     //IMPORTANTE TENER EL MISMO NOMBRE QUE EN BD
+    public function setImagenAttribute($imagen)
     {
-        $this->attributes['imagen'] = $imagen instanceof UploadedFile  //IMPORTANTE TENER EL MISMO NOMBRE QUE EN BD
+        $this->attributes['imagen'] = $imagen instanceof UploadedFile
             ? Storage::url($imagen->store(static::IMAGE_PATH))
             : $imagen;
     }
 
-    public function setMaterialAttribute($material)     //IMPORTANTE TENER EL MISMO NOMBRE QUE EN BD
+    public function setMaterialAttribute($material)
     {
-        $this->attributes['material'] = $material instanceof UploadedFile  //IMPORTANTE TENER EL MISMO NOMBRE QUE EN BD
+        $this->attributes['material'] = $material instanceof UploadedFile
             ? Storage::url($material->store(static::DOC_PATH))
             : $material;
+    }
+
+    //------------------- Accessors -------------------//
+    public function getNumOfClassesAttribute()
+    {
+        return 8;
+    }
+
+    public function getIsFreeAttribute()
+    {
+        return $this->price == 0;
     }
 }
