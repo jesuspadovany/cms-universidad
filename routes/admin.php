@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\CoursesController;
 use App\Http\Controllers\Admin\LibraryController;
-use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\EventsController;
 
 
 Route::middleware('auth')->group(function() {
@@ -18,10 +18,10 @@ Route::middleware('auth')->group(function() {
         Route::delete('/{slide}', [SliderController::class, 'delete'])->name('delete');
     });
 
-    Route::prefix('/agenda')->name('schedule.')->group(function() {
-        Route::get('/', [ScheduleController::class, 'index'])->name('index');
-        Route::get('/crear', [ScheduleController::class, 'create'])->name('create');
-        Route::get('/slider', [ScheduleController::class, 'slider'])->name('slider');
+    Route::prefix('/agenda')->name('events.')->group(function() {
+        Route::get('/', [EventsController::class, 'index'])->name('index');
+        Route::get('/crear', [EventsController::class, 'create'])->name('create');
+        Route::get('/slider', [EventsController::class, 'slider'])->name('slider');
     });
 
     Route::prefix('/biblioteca')->name('library.')->group(function() {

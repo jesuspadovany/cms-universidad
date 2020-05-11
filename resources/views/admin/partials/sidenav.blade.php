@@ -47,10 +47,10 @@
 		</li>
 		<li>
 			<a
-                href="{{ route('admin.schedule.index') }}"
+                href="{{ route('admin.events.index') }}"
                 class="
                     sidenav__link
-                    {{ getMenuLinkBgColor(['admin.schedule.index', 'admin.schedule.slider', 'admin.schedule.create']) }}
+                    {{ getMenuLinkBgColor(['admin.events.index', 'admin.events.slider', 'admin.events.create']) }}
                 ">
 				<span class="inline-block mr-2 w-10 text-center">
 					<i class="fas fa-calendar-alt fa-lg"></i>

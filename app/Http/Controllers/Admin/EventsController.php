@@ -4,20 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-class ScheduleController extends Controller
+class EventsController extends Controller
 {
     public function index()
     {
-        return view('admin.schedule.index');
+        return view('admin.events.index');
     }
 
     public function slider()
     {
-        return view('admin.schedule.slider');
+        return view('admin.events.slider');
     }
 
     public function create()
     {
-        return view('admin.schedule.create');
+        return view('admin.events.create');
     }
 }

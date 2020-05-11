@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class ScheduleController extends Controller
+class EventsController extends Controller
 {
     public function index()
     {
-    	return view('schedule.index');
+    	return view('events.index');
     }
 }
