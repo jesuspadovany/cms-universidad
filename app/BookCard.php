@@ -8,10 +8,6 @@ class BookCard extends Model
 {
     protected $guarded = [];
 
-    protected $appends = [
-        'full_short_text'
-    ];
-
     //------------------- Relationships -------------------//
     public function book()
     {
@@ -19,12 +15,50 @@ class BookCard extends Model
     }
 
     //------------------- Accessors -------------------//
-    public function getFullShortTextAttribute()
+    public function getBookUrlAttribute()
     {
-        $text = $this->book->published_at->format('Y') . ' / ' . $this->book->num_of_pages . ' páginas';
+        return route('library.show', ['slug' => $this->book->slug, 'book' => $this->book->id]);
+    }
 
-        return is_null($this->short_text)
-            ? $text
-            : $this->short_text . ' / ';
+    public function getBookTitleAttribute()
+    {
+        return $this->book->title;
+    }
+
+    public function getBookImageAttribute()
+    {
+        return $this->book->image;
+    }
+
+    public function getBookPriceAttribute()
+    {
+        return $this->book->price;
+    }
+
+    public function getBookIsFreeAttribute()
+    {
+        return $this->book->is_free;
+    }
+
+    //-------------------- Methods --------------------//
+    public function getCardWithAccesors()
+    {
+        return $this->setAppends([
+            'book_url',
+            'book_title',
+            'book_image',
+            'book_price',
+            'book_is_free',
+        ])->toArray();
+    }
+
+    //-------------------- Static methods --------------------//
+    public static function createFromBook(Book $book)
+    {
+        return static::create([
+            'book_id' => $book->id,
+            'short_text' => $book->published_at->format('Y') . ' / ' . $book->num_of_pages . ' páginas',
+            'long_description' => $book->synopsis,
+        ]);
     }
 }

@@ -23,7 +23,9 @@ class StoreBookRequest extends FormRequest
     {
         $this->merge([
             'is_electronic' => $this->is_electronic === 'si' ? true : false,
+            'file' => $this->is_electronic === 'si' ? $this->file : null,
             'is_free' => $this->is_free === 'si' ? true : false,
+            'price' => $this->is_free === 'si' ? null : $this->price,
             'slug' => Str::slug($this->title)
         ]);
     }

@@ -58,6 +58,16 @@ class Book extends Model
         return $this->attributes['is_free'] ? 'Descargar' : 'Comprar';
     }
 
+    public function getPriceTextAttribute()
+    {
+        return $this->attributes['is_free'] ? 'Gratis' : '$' . $this->price;
+    }
+
+    public function getCardWithAccessorsAttribute()
+    {
+        return $this->card->getCardWithAccesors();
+    }
+
     //------------------- Static methdos -------------------//
     public static function getBooksInSlider()
     {

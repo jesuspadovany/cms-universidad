@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('section-title', 'Biblioteca')
+@section('section-title', 'Biblioteca - Agregar libro')
 
 @section('content')
 <section class="p-4">

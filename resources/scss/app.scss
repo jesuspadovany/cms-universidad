@@ -73,7 +73,7 @@ body {
 }
 
 .btn {
-    @apply .inline-block .px-3 .py-2 .rounded-md .font-semibold;
+    @apply .inline-block .px-3 .py-2 .rounded-md .font-semibold .text-base;
 
     &:hover {
         @apply .no-underline;
@@ -81,6 +81,14 @@ body {
 
     &:focus {
         @apply .outline-none;
+    }
+
+    &-sm {
+        @apply .px-2 .py-1 .text-sm;
+    }
+
+    &-lg {
+        @apply .px-4 .py-3;
     }
 
     &-primary {

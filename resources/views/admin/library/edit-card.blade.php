@@ -9,7 +9,7 @@
 
     <edit-book-card-form
         :csrf-token='@json(csrf_token())'
-        :book='@json($book)'
+        :card='@json($card)'
     ></edit-book-card-form>
 </section>
 @endsection

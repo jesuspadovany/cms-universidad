@@ -4,26 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Page;
+use App\BookCard;
 use App\Category;
 
 class LibraryController extends Controller
 {
+    const INDEX_PAGINATION_NUM = 10;
+
     public function index()
     {
-        return $this->indexView(Book::paginate(10), 'Biblioteca');
+        $bookCards = BookCard::with('book')
+            ->orderBy('id', 'desc')
+            ->paginate(self::INDEX_PAGINATION_NUM);
+
+        return $this->indexView($bookCards, 'Biblioteca');
     }
 
     public function indexByCategory(Category $category)
     {
         $sectionTitle = 'Biblioteca - ' . ucfirst($category->name);
 
-        return $this->indexView($category->books()->paginate(10), $sectionTitle, true);
+        $bookCards = BookCard::with('book')
+            ->whereHas('book.categories', function($query) use ($category) {
+                $query->where('id', $category->id);
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(self::INDEX_PAGINATION_NUM);
+
+
+        return $this->indexView($bookCards, $sectionTitle, true);
     }
 
-    protected function indexView($books, $sectionTitle, $filtered = false)
+    protected function indexView($bookCards, $sectionTitle, $filtered = false)
     {
         return view('library.index', [
-            'books' => $books,
+            'bookCards' => $bookCards,
             'page' => Page::where('name', 'biblioteca')->first(),
             'categories' => Category::getLibraryCategories(),
             'sectionTitle' => $sectionTitle,

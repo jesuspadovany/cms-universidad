@@ -29,7 +29,7 @@
           :key="j"
           :style="colsWithPercentage"
         >
-          <BookCard :book="book" />
+          <BookCard :card="book.cardWithAccessors" />
         </div>
       </div>
     </div>

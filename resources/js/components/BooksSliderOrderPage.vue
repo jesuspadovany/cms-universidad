@@ -54,7 +54,7 @@
             </p>
 
             <!-- Book card -->
-            <BookCard class="mb-6 w-full" :book="book" />
+            <BookCard class="mb-6 w-full" :card="book.cardWithAccessors" />
 
             <!-- Botones de arriba posición -->
             <div class="px-1">

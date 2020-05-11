@@ -221,7 +221,7 @@ export default {
       synopsis: old('synopsis', book.synopsis),
       author: old('author', book.author),
       numOfPages: old('num_of_pages', book.num_of_pages),
-      publishedAt: old('published_at', book.published_at),
+      publishedAt: old('published_at', book.published_at.substring(0, 10)),
       isFree: old('is_free', book.is_free ? 'si' : 'no'),
       price: old('price', book.price),
       isElectronic: old('is_electronic', book.isElectronic ? 'si' : 'no'),

@@ -17,19 +17,15 @@
         <div class="w-1/2">
             <div class="flex items-center justify-between mb-4">
                 <p class="text-xl">Imagen principal</p>
-                <a href="{{ route('admin.library.changePageImage') }}" class="px-2 py-1 rounded-md bg-primary font-semibold text-white">Cambiar imagen</a>
+                <a href="{{ route('admin.library.changePageImage') }}" class="btn btn-primary px-2 py-1 text-sm">Cambiar imagen</a>
             </div>
             @if (! is_null($page))
                 <img src="{{ asset($page->image) }}">
             @endif
         </div>
         <div class="flex flex-col items-end justify-center w-1/2 text-right">
-            <a href="{{ route('admin.library.create') }}" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Agregar libro</a>
-            <a href="#" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Filtros</a>
-            <a href="#" class="px-4 py-3 border-2 border-primary rounded text-primary text-xl">
-                Filtrar por
-                <i class="fas fa-caret-down"></i>
-            </a>
+            <a href="{{ route('admin.library.create') }}" class="btn btn-primary px-4 py-3 mb-6 text-xl">Agregar libro</a>
+            <a href="#" class="btn btn-primary px-4 py-3 text-xl">Filtros</a>
         </div>
     </div>
 
@@ -39,7 +35,7 @@
     {{-- Orden en el slider --}}
     <div class="flex items-center my-4">
         <p class="font-semibold text-primary text-lg">Orden en el slider</p>
-        <a href="{{ route('admin.library.slider') }}" class="ml-auto text-primary hover:underline">Editar</a>
+        <a href="{{ route('admin.library.slider') }}" class="btn btn-primary px-2 py-1 ml-auto text-sm">Editar</a>
     </div>
 
     {{-- Slides --}}
@@ -74,7 +70,7 @@
                     <td>{{ $book->price }}</td>
                     <td>{{ $book->author }}</td>
                     <td>{{ $book->isElectronic ? 'Si' : 'No' }}</td>
-                    <td width="150" class="text-right">
+                    <td width="120" class="text-right">
                         {{-- Link de ver detalles --}}
                         <a href="{{ route('admin.library.show', $book) }}" class="mr-2 text-green-500">
                             <i class="fas fa-eye"></i>
@@ -115,5 +111,9 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="mt-4 text-center">
+        {{ $books->links() }}
+    </div>
 </section>
 @endsection

@@ -69,7 +69,8 @@
                         'admin.library.slider',
                         'admin.library.changePageImage',
                         'admin.library.edit',
-                        'admin.library.show'
+                        'admin.library.show',
+                        'admin.library.editCard'
                     ]) }}
                 "
             >

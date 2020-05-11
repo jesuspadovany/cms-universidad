@@ -11,7 +11,7 @@
         <x-slot name="titleslot">
             <h2 class="flex items-center text-5xl">
                 <img src="{{ asset('images/library-icon-red.png') }}" alt="Biblioteca" class="inline-block w-12 h-12 mr-4">
-                Biblioteca
+                {{ $sectionTitle }}
             </h2>
         </x-slot>
 
@@ -32,64 +32,17 @@
 
     {{-- Cards --}}
     <div class="flex flex-wrap">
-        {{-- @forelse ($books as $book)
+        @forelse ($bookCards as $card)
             <div class="w-1/2 p-2">
-                <book-card :book='@json($book)'></book-card>
+                <book-card :card='@json($card->getCardWithAccesors())'></book-card>
             </div>
         @empty
             <h3 class="w-full p-8 text-center text-4xl">No hay libros para mostrar</h3>
-        @endforelse --}}
-        @foreach (range(1, 10) as $i)
-        <div class="w-1/2 p-2">
-            <div class="bg-gray-300 rounded-lg overflow-hidden" style="box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.38);}">
-            <!-- Body -->
-            <div class="flex h-56">
-              <!-- Image -->
-              <div class="flex-shrink-0 flex w-40 p-3 bg-gray-400">
-                @php
-                    $book = App\Book::get()->first();
-                @endphp
-                <a href="{{ route('library.show', ['slug' => $book->slug, 'book' => $book->id]) }}" class="block w-full h-full">
-                  <img src="{{ asset('images/book-default-image.png') }}" class="block h-full w-full" style="box-shadow: 3px 3px 3px rgba(0, 0, 0, .4);">
-                </a>
-              </div>
-
-              <!-- Content -->
-              <div class="p-4 w-full text-sm">
-                <!-- Nombre del libro -->
-                <h3 class="mb-3 leading-none capitalize text-2xl">
-                  <a href="{{ route('library.show', ['slug' => $book->slug, 'book' => $book->id]) }}">
-                    Somos nuestro cerebro
-                  </a>
-                </h3>
-
-                <p>
-                    <b>Ensayo de divulgación cientifica</b>
-                </p>
-                <p>
-                    Rosario Bléfari y Susana Pampín sobre textos de Sergio Strejilevich / 2003 / 64 páginas
-                </p>
-
-                <p class="mt-3">
-                    Los nuevos paradigmas científicos son un mapa desde donde volver a descubrir el mundo, ya que bajo los ojos de la ciencia nuestro universo interno se extiende y alcanza dimensiones que lo reconcilian con la naturaleza.
-                </p>
-              </div>
-            </div>
-            <!-- Footer -->
-            <div class="flex px-3 py-2 bg-primary font-semibold text-white">
-              <span>Gratis</span>
-
-              <a href="#" class="ml-auto">
-                Leer
-              </a>
-            </div>
-          </div>
-        </div>
-        @endforeach
+        @endforelse
     </div>
 
-    <div class="text-center">
-        {{ $books->links() }}
+    <div class="mt-4 text-center">
+        {{ $bookCards->links() }}
     </div>
 </section>
 @endsection
