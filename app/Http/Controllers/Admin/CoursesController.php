@@ -6,10 +6,7 @@ use App\Page;
 use App\Course;
 use App\Category;
 use App\CourseCard;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCoursesRequest;
@@ -17,6 +14,21 @@ use App\Http\Requests\StorePageImageRequest;
 
 class CoursesController extends Controller
 {
+    public function index()
+    {
+        return view('admin.courses.index', [
+            'page' => Page::where('name', 'cursos')->first(),
+            'courses' => Course::with('categories')->orderBy('id', 'desc')->paginate(),
+        ]);
+    }
+
+    public function show(Course $course)
+    {
+        return view('admin.courses.show', [
+            'course' => $course,
+        ]);
+    }
+
     public function create()
     {
         return view('admin.courses.create', [
@@ -52,14 +64,6 @@ class CoursesController extends Controller
         ]);
     }
 
-    public function index()
-    {
-        return view('admin.courses.index', [
-            'page' => Page::where('name', 'cursos')->first(),
-            'cursos' => Course::with('categories')->orderBy('nombre')->get(),
-        ]);
-    }
-
     public function changePageImage()
     {
         return view('admin.courses.change-page-image');
@@ -92,17 +96,17 @@ class CoursesController extends Controller
 
     }
 
-    public function updateCourseComponent(Course $course)
+    public function edit(Course $course)
     {
         $course->load('categories');
 
-        return view('admin.courses.update', [
+        return view('admin.courses.edit', [
             'categories' => Category::whereModuleIsCourses()->get(),
             'curso' => $course
         ]);
     }
 
-    public function storeUpdate(UpdateCoursesRequest $request , Course $course)
+    public function update(UpdateCoursesRequest $request , Course $course)
     {
         $course->update([
             'ubicacion' => $request->ubicacion,

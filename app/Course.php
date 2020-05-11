@@ -53,4 +53,9 @@ class Course extends Model
     {
         return $this->price == 0;
     }
+
+    public function getPriceTextAttribute()
+    {
+        return $this->is_free ? 'Gratis' : '$' . $this->price;
+    }
 }

@@ -19,12 +19,15 @@ class CoursesController extends Controller
         ]);
     }
 
-    public function show(Course $course)
+    public function show($slug, $id)
     {
-        return $course;
-        return view('courses.detalle', [
+        $course = Course::where('id', $id)
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return view('courses.show', [
             'categories' => Category::whereModuleIsLibrary()->get(),
-            'curso' => $curso
+            'course' => $course
         ]);
     }
 }

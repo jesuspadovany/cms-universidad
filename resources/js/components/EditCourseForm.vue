@@ -1,17 +1,19 @@
 <template>
-    <form :action="url('admin/cursos/crear')" method="POST" enctype="multipart/form-data">
+  <form :action="url(`admin/cursos/${course.id}`)" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" :value="csrfToken">
+    <input type="hidden" name="_method" value="PUT">
 
     <div class="grid grid-cols-6 gap-4">
       <div class="md:col-span-4">
+
         <!-- Ubicación -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-6/12">Ubicacion</label>
+          <label for="ubicacion" class="w-6/12">Ubicacion</label>
           <input
             type="text"
             name="ubicacion"
             id="ubicacion"
-            required
+            v-model="course.ubicacion"
             placeholder="Ubicación"
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           >
@@ -19,55 +21,39 @@
 
         <!-- Título -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-6/12">Nombre del curso</label>
+          <label for="nombre" class="w-6/12">Nombre del curso</label>
           <input
             type="text"
             name="nombre"
             id="nombre"
-            required
-            placeholder="Nombre del libro"
+            v-model="course.nombre"
+            placeholder="Nombre del curso"
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           >
         </div>
 
-        <!-- Descripción Curso -->
-        <div class="flex items-center mb-5">
-          <label for="description" class="w-6/12">Descripción del curso</label>
-          <textarea
-            type="text"
-            name="descripcion_curso"
-            id="desciption_curso"
-            placeholder="Descripción"
-            rows="1"
-            required
-            class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
-          ></textarea>
-        </div>
-
-        <!-- Descripción Curso -->
+        <!-- Descripción -->
         <div class="flex items-center mb-5">
           <label for="description" class="w-6/12">Descripción</label>
           <textarea
             type="text"
             name="descripcion"
             id="description"
+            v-model="course.descipcion"
             placeholder="Descripción"
-            rows="1"
-            required
+            rows="2"
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           ></textarea>
         </div>
 
-        <!-- Precio  v-show="sellType === 'pago'"-->
-        <div
-          class="flex items-center mb-5"
-        >
+        <!-- Precio -->
+        <div class="flex items-center mb-5">
           <label for="price" class="w-6/12">Precio</label>
           <input
             type="number"
             name="precio"
             id="price"
-            required
+            v-model="course.precio"
             placeholder="Precio"
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           />
@@ -82,13 +68,13 @@
             name="categories"
             placeholder="Asignar categoría"
             readonly
-            required
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
             :value="selectedCategoriesText"
             @focus="showSelectCategoryModal = true"
           />
         </div>
 
+        <!-- Inputs hidden con los id de las categorias -->
         <input v-for="(category, i) in selectedCategories"
           :key="category.id"
           type="hidden"
@@ -96,15 +82,15 @@
           required
           :value="category.id"
         />
-        
+
         <!--Horario y fecha -->
         <div class="flex items-center mb-5">
-            <label for="price" class="w-6/12">Horario y fecha</label>
+            <label for="horario" class="w-6/12">Horario y fecha</label>
             <input
               type="datetime-local"
               name="horario"
-              id="price"
-              required
+              id="horario"
+              v-model="course.horarios"
               placeholder="Precio"
               class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
             />
@@ -114,12 +100,12 @@
       <div class="md:col-span-2">
         <!-- Profesor -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-4/12">Profesor</label>
+          <label for="profesor" class="w-4/12">Profesor</label>
           <input
             type="text"
             name="profesor"
             id="profesor"
-            required
+            v-model="course.profesor"
             placeholder="Profesor"
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           >
@@ -127,35 +113,34 @@
 
         <!-- Anfitrión -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-4/12">Anfitrión</label>
+          <label for="anfitrion" class="w-4/12">Anfitrión</label>
           <input
             type="text"
             name="anfitrion"
             id="anfitrion"
-            required
+            v-model="course.anfitrion"
             placeholder="Anfitrion"
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           >
         </div>
 
-        <!-- Clases -->
+        <!-- Tipo -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-11/12">presencial o online</label>
-          <select name="clase" id="clase" required  class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400">
-            <option selected>Seleccione</option> 
-            <option value="1" >Presencial</option>
-            <option value="2">Online</option>
+          <label for="tipo" class="w-11/12">Presencial u online</label>
+          <select name="tipo" id="tipo" v-model="course.tipo" class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400">
+            <option value="" disabled selected>Seleccione un opcion</option>
+            <option value="presencial" >Presencial</option>
+            <option value="online">Online</option>
           </select>
         </div>
-
         <!--Duración-->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-9/12">Duración (horas)</label>
+          <label for="duracion" class="w-9/12">Duración (horas)</label>
           <input
             type="number"
             name="duracion"
             id="duracion"
-            required
+            v-model="course.duracion"
             placeholder="Duración"
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           >
@@ -167,6 +152,7 @@
       <label for="material" class="w-1/4">Material (Opcional)</label>
       <input type="file"
         class="w-2/4"
+        value="course.material"
         id="material"
         name="material"
       >
@@ -179,8 +165,6 @@
       </div>
     </div>
 
-    
-
     <div class="text-right mt-6">
       <button type="submit" class="inline-block px-6 py-3 rounded-md bg-primary font-semibold text-white mr-6">
         Guardar
@@ -190,12 +174,10 @@
     <ModalSelectCategory
       v-show="showSelectCategoryModal"
       :categories="categories"
+      :currentCategories="course.categories"
       @accepted="onCategoriesSelected"
     />
   </form>
-
-
-
 </template>
 
 <script>
@@ -204,14 +186,15 @@ import { useUrlGenerator } from '@/composables/useUrlGenerator';
 
 export default {
   props: {
+    course: Object,
     csrfToken: String,
     categories: Array
+
   },
   setup(props) {
     const url = useUrlGenerator();
     const showSelectCategoryModal = ref(false);
-    const selectedCategories = ref([]);
-    const sellType = ref('');
+    const selectedCategories = ref(props.course.categories);
 
     const selectedCategoriesText = computed(() => selectedCategories.value.map(c => c.name).join(', '));
 
@@ -227,7 +210,6 @@ export default {
       selectedCategories,
       onCategoriesSelected,
       selectedCategoriesText,
-      sellType
     }
   }
 }

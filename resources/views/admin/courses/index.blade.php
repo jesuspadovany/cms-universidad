@@ -15,20 +15,16 @@
         <div class="w-1/2">
             <div class="flex items-center justify-between mb-4">
                 <p class="text-xl">Imagen principal</p>
-                <a href="{{ route('admin.courses.changePageImage') }}" class="px-2 py-1 rounded-md bg-primary font-semibold text-white">Cambiar imagen</a>
+                <a href="{{ route('admin.courses.changePageImage') }}" class="btn btn-primary px-2 py-1 text-sm">Cambiar imagen</a>
             </div>
             @if (! is_null($page))
                 <img src="{{ asset($page->image) }}">
             @endif
         </div>
         <div class="flex flex-col items-end justify-center w-1/2 text-right">
-            <a href="{{ route('admin.courses.create') }}" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Agregar curso</a>
+            <a href="{{ route('admin.courses.create') }}" class="btn btn-primary px-4 py-3 mb-6 text-xl">Agregar curso</a>
 
-            <a href="#" class="px-4 py-3 mb-6 bg-primary rounded font-semibold text-white text-xl">Filtros</a>
-            <a href="#" class="px-4 py-3 border-2 border-primary rounded text-primary text-xl">
-                Filtrar por
-                <i class="fas fa-caret-down"></i>
-            </a>
+            <a href="#" class="btn btn-primary px-4 py-3 text-xl">Filtros</a>
         </div>
     </div>
 
@@ -46,57 +42,74 @@
 
 
     <h3 class="mb-4 font-semibold text-primary text-xl">Cursos</h3>
-    <div class="grid grid-cols-2 grid-rows-2 gap-6">
-        @foreach ($cursos as $curso)
-			<div class="bg-gray-300 rounded-lg overflow-hidden">
-				<div class="flex h-40">
-					<div class="flex-shrink-0 flex w-32 bg-gray-400">
-						<img src="{{ asset($curso->imagen) }}" heigth="100%" class="inline shadow-md">
-					</div>
-					<div class="p-4 w-full">
-						<h3 class="text-xl mb-2">{{$curso->nombre}}</h3>
-						<p>
-                            {{$curso->descripcion_curso}}
-                        </p>
-                        <br>
-                        <p class="text-primary">
-                            @foreach($curso->categories as  $category)
-                                {{ $category->name }},
-                            @endforeach
-						</p>
-					</div>
-				</div>
-				<div class="flex px-3 py-2 bg-primary font-semibold text-white">
-					<span>
-                        @if($curso->precio == 0)
-                            Gratis
-                        @else
-                            {{$curso->precio}} ARS
-                        @endif
-                    </span>
-                    <a href="{{ route('admin.courses.update',[$curso->id]) }}" class="m-auto hover:underline">Editar</a>
 
-                    <form action="{{ route('admin.courses.eliminar', $curso) }}" method="POST" class="hidden" ref="formEliminar{{ $loop->index }}">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-                    {{-- Modal trigger --}}
-                    <confirm-modal-trigger
-                        class="inline-block"
-                        v-slot="{ show }"
-                        @accept="$refs['formEliminar{{ $loop->index }}'].submit()"
-                    >
-                        <a
-                            href="{{ route('admin.courses.eliminar', $curso) }}"
-                            class="hover:underline"
-                            @click.prevent="show"
-                        >
-                            Eliminar
+    {{-- Tabla de cursos --}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>¿Es gratuito?</th>
+                <th>Precio</th>
+                <th>Profesor(a)</th>
+                <th>Tipo</th>
+                <th>Duración</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($courses as $course)
+                <tr>
+                    <td>{{ $course->nombre }}</td>
+                    <td>{{ $course->is_free ? 'Si' : 'No' }}</td>
+                    <td>{{ $course->precio }}</td>
+                    <td>{{ $course->profesor }}</td>
+                    <td>{{ $course->tipo }}</td>
+                    <td>{{ $course->duracion }}</td>
+                    <td width="120" class="text-right">
+                        {{-- Link de ver detalles --}}
+                        <a href="{{ route('admin.courses.show', $course) }}" class="mr-2 text-green-500">
+                            <i class="fas fa-eye"></i>
                         </a>
-                    </confirm-modal-trigger>
-				</div>
-			</div>
-		@endforeach
-	</div>
+
+                        {{-- Link de editar --}}
+                        <a href="{{ route('admin.courses.edit', $course) }}" class="mr-2 text-blue-600" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        {{-- Form de eliminar --}}
+                        <form
+                            action="{{ route('admin.courses.delete', $course) }}"
+                            method="POST"
+                            class="hidden"
+                            ref="form-{{ $loop->index }}"
+                        >
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                        {{-- Modal trigger --}}
+                        <confirm-modal-trigger
+                            class="inline-block"
+                            v-slot="{ showModal, show, hide }"
+                            @accept="$refs['form-{{ $loop->index }}'].submit()"
+                        >
+                            <a
+                                href="{{ route('admin.courses.delete', $course) }}"
+                                class="text-red-700"
+                                title="Eliminar"
+                                @click.prevent="show"
+                            >
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </confirm-modal-trigger>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <div class="mt-4 text-center">
+        {{ $courses->links() }}
+    </div>
+</section>
 </section>
 @endsection

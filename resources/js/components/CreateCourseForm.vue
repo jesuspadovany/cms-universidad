@@ -6,7 +6,7 @@
       <div class="md:col-span-4">
         <!-- Ubicación -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-6/12">Ubicacion</label>
+          <label for="ubicacion" class="w-6/12">Ubicacion</label>
           <input
             type="text"
             name="ubicacion"
@@ -19,7 +19,7 @@
 
         <!-- Título -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-6/12">Nombre del curso</label>
+          <label for="nombre" class="w-6/12">Nombre del curso</label>
           <input
             type="text"
             name="nombre"
@@ -32,33 +32,19 @@
 
         <!-- Descripción Curso -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-6/12">Descripción del curso</label>
-          <textarea
-            type="text"
-            name="descripcion_curso"
-            id="desciption_curso"
-            placeholder="Descripción"
-            rows="1"
-            required
-            class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
-          ></textarea>
-        </div>
-
-        <!-- Descripción Curso -->
-        <div class="flex items-center mb-5">
           <label for="description" class="w-6/12">Descripción</label>
           <textarea
             type="text"
             name="descripcion"
             id="description"
             placeholder="Descripción"
-            rows="1"
+            rows="7"
             required
             class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
           ></textarea>
         </div>
 
-        <!-- Precio  v-show="sellType === 'pago'"-->
+        <!-- Precio -->
         <div
           class="flex items-center mb-5"
         >
@@ -89,6 +75,7 @@
           />
         </div>
 
+        <!-- Inputs hidden con los id de las categorias -->
         <input v-for="(category, i) in selectedCategories"
           :key="category.id"
           type="hidden"
@@ -114,7 +101,7 @@
       <div class="md:col-span-2">
         <!-- Profesor -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-4/12">Profesor</label>
+          <label for="profesor" class="w-4/12">Profesor</label>
           <input
             type="text"
             name="profesor"
@@ -127,7 +114,7 @@
 
         <!-- Anfitrión -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-4/12">Anfitrión</label>
+          <label for="anfitrion" class="w-4/12">Anfitrión</label>
           <input
             type="text"
             name="anfitrion"
@@ -140,7 +127,7 @@
 
         <!-- Tipo -->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-11/12">Presencial y online</label>
+          <label for="tipo" class="w-11/12">Presencial y online</label>
           <select name="tipo" id="tipo" required  class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400">
             <option value="" disabled selected>Seleccione un opcion</option>
             <option value="presencial">Presencial</option>
@@ -150,7 +137,7 @@
 
         <!--Duración-->
         <div class="flex items-center mb-5">
-          <label for="description" class="w-9/12">Duración (horas)</label>
+          <label for="duracion" class="w-9/12">Duración (horas)</label>
           <input
             type="number"
             name="duracion"
@@ -211,7 +198,6 @@ export default {
     const url = useUrlGenerator();
     const showSelectCategoryModal = ref(false);
     const selectedCategories = ref([]);
-    const sellType = ref('');
 
     const selectedCategoriesText = computed(() => selectedCategories.value.map(c => c.name).join(', '));
 
@@ -227,7 +213,6 @@ export default {
       selectedCategories,
       onCategoriesSelected,
       selectedCategoriesText,
-      sellType
     }
   }
 }

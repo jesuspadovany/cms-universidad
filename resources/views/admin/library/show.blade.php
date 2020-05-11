@@ -49,9 +49,9 @@
         </div>
     </div>
 
-    <div class="px-4 py-2 rounded-md bg-gray-200">
+    <div class="admin-card">
         {{-- Título --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 Título
             </div>
@@ -61,7 +61,7 @@
         </div>
 
         {{-- Sinopsis --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 Sinopsis
             </div>
@@ -71,7 +71,7 @@
         </div>
 
         {{-- Autor --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 Autor
             </div>
@@ -81,7 +81,7 @@
         </div>
 
         {{-- Cantida de páginas --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 Cantidad de páginas
             </div>
@@ -91,7 +91,7 @@
         </div>
 
         {{-- Fecha de publicación --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 Fecha de publicación
             </div>
@@ -101,7 +101,7 @@
         </div>
 
         {{-- Categorias --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 Categorias
             </div>
@@ -113,7 +113,7 @@
         </div>
 
         {{-- ¿Es gratuito? --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 ¿Es gratuito?
             </div>
@@ -123,7 +123,7 @@
         </div>
 
         {{-- Precio --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 Precio
             </div>
@@ -133,7 +133,7 @@
         </div>
 
         {{-- ¿Es electrónico? --}}
-        <div class="flex py-3 border-b border-gray-400">
+        <div class="admin-card__section">
             <div class="w-1/4 font-semibold">
                 ¿Es electrónico?
             </div>

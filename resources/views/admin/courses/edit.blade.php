@@ -9,12 +9,12 @@
             {{ $error }} <br>
         @endforeach
     </div>
-    
-    <update-course
+
+    <edit-course-form
         class="p-6"
-        v-bind:data_cursos='@json($curso)'
+        :course='@json($curso)'
         :categories='@json($categories)'
         :csrf-token='@json(csrf_token())'
-    ></update-course>
+    ></edit-course-form>
 </section>
 @endsection

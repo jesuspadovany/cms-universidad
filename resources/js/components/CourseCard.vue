@@ -4,7 +4,7 @@
     <div class="flex h-56">
       <!-- Image -->
       <div class="flex-shrink-0 flex w-40 bg-gray-400">
-        <a :href="url(`/cursos/${course.id}`)" class="block w-full h-full">
+        <a :href="url(`/cursos/${course.slug}/${course.id}`)" class="block w-full h-full">
           <img :src="url(course.imagen)" class="image">
         </a>
       </div>

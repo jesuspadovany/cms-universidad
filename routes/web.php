@@ -13,7 +13,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::prefix('/cursos')->name('courses.')->group(function() {
     Route::get('/', [CoursesController::class, 'index'])->name('index');
-    Route::get('/{course}', [CoursesController::class, 'show'])->name('show');
+    Route::get('/{slug}/{course}', [CoursesController::class, 'show'])->name('show');
 });
 
 Route::prefix('/agenda')->name('schedule.')->group(function() {

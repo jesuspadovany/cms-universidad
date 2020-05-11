@@ -17,7 +17,7 @@
         <div class="w-1/2">
             <div class="flex items-center justify-between mb-4">
                 <p class="text-xl">Imagen principal</p>
-                <a href="{{ route('admin.library.changePageImage') }}" class="btn btn-primary px-2 py-1 text-sm">Cambiar imagen</a>
+                <a href="{{ route('admin.library.changePageImage') }}" class="px-2 py-1 rounded-md bg-primary font-semibold text-white">Cambiar imagen</a>
             </div>
             @if (! is_null($page))
                 <img src="{{ asset($page->image) }}">
