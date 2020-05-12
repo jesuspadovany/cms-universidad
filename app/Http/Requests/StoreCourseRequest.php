@@ -42,7 +42,6 @@ class StoreCourseRequest extends FormRequest
             'categories.*' => ['exists:categories,id'],
             'ubicacion' => ['required', 'max:255'],
             'profesor' => ['required', 'string', 'max:255'],
-            'duracion' => ['required', 'numeric'],
             'horario' => ['required'],
             'anfitrion' => ['required', 'string', 'max:255'],
             'tipo' => ['required', Rule::in(CourseTypes::getConstantsInArray())],

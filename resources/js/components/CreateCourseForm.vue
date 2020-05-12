@@ -86,15 +86,26 @@
 
         <!--Horario y fecha -->
         <div class="flex items-center mb-5">
-            <label for="price" class="w-6/12">Horario y fecha</label>
-            <input
-              type="datetime-local"
-              name="horario"
-              id="price"
-              required
-              placeholder="Precio"
-              class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
-            />
+          <label for="horario" class="w-6/12">Horario y fecha</label>
+          <a
+            href="#"
+            class="block w-full font-semibold text-primary"
+            @click.prevent="showModalSchedule"
+          >
+            + Agregar horario
+          </a>
+        </div>
+
+        <!-- Inputs con los horarios -->
+        <div
+          v-for="(schedule, index) in schedules"
+          :key="index"
+        >
+          <pre>{{ schedule }}</pre>
+          <input
+            type="hidden"
+            :name="`schedules[${index}]`"
+          />
         </div>
       </div>
 
@@ -134,21 +145,9 @@
             <option value="online">Online</option>
           </select>
         </div>
-
-        <!--Duración-->
-        <div class="flex items-center mb-5">
-          <label for="duracion" class="w-9/12">Duración (horas)</label>
-          <input
-            type="number"
-            name="duracion"
-            id="duracion"
-            required
-            placeholder="Duración"
-            class="w-full px-2 py-2 focus:outline-none focus:shadow-outline border border-gray-400"
-          >
-        </div>
       </div>
     </div>
+
     <!--Material-->
     <div class="flex items-center mb-5">
       <label for="material" class="w-1/4">Material (Opcional)</label>
@@ -166,8 +165,7 @@
       </div>
     </div>
 
-
-
+    <!-- Botón de guardar -->
     <div class="text-right mt-6">
       <button type="submit" class="inline-block px-6 py-3 rounded-md bg-primary font-semibold text-white mr-6">
         Guardar
@@ -179,15 +177,19 @@
       :categories="categories"
       @accepted="onCategoriesSelected"
     />
+
+    <ModalSelectSchedule
+      v-if="modalScheduleShown"
+      @backdrop-clicked="hideModalSchedule"
+      :schedules.sync="schedules"
+    />
   </form>
-
-
-
 </template>
 
 <script>
 import { ref, computed } from '@vue/composition-api';
 import { useUrlGenerator } from '@/composables/useUrlGenerator';
+import { useToggleModal } from '@/composables/useToggleModal';
 
 export default {
   props: {
@@ -198,6 +200,8 @@ export default {
     const url = useUrlGenerator();
     const showSelectCategoryModal = ref(false);
     const selectedCategories = ref([]);
+    const schedules = ref([]);
+    const { shown: modalScheduleShown, hide: hideModalSchedule, show: showModalSchedule } = useToggleModal();
 
     const selectedCategoriesText = computed(() => selectedCategories.value.map(c => c.name).join(', '));
 
@@ -213,6 +217,10 @@ export default {
       selectedCategories,
       onCategoriesSelected,
       selectedCategoriesText,
+      modalScheduleShown,
+      hideModalSchedule,
+      showModalSchedule,
+      schedules,
     }
   }
 }

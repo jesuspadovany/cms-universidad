@@ -26,7 +26,6 @@ class CreateCoursesTable extends Migration
             $table->string('profesor');
             $table->string('anfitrion');
             $table->string('tipo');
-            $table->string('duracion');
             $table->timestamps();
         });
     }

@@ -42,7 +42,6 @@ class UpdateCoursesRequest extends FormRequest
             'categories.*' => ['exists:categories,id'],
             'ubicacion' => ['max:255'],
             'profesor' => ['string', 'max:255'],
-            'duracion' => ['numeric'],
             'horario' => ['required'],
             'anfitrion' => ['string', 'max:255'],
             'tipo' => ['required', Rule::in(CourseTypes::getConstantsInArray())],
