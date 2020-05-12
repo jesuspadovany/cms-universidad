@@ -34,7 +34,8 @@
     {{-- Orden en el slider --}}
     <div class="flex items-center my-4">
         <p class="font-semibold text-primary text-lg">Orden en el slider</p>
-        <a href="#!" class="ml-auto text-primary hover:underline">Editar</a>
+
+        <a href="#" class="btn btn-primary px-2 py-1 ml-auto text-sm">Editar</a>
     </div>
 
     {{-- Separador --}}

@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { ref, computed, watchEffect, onMounted, onUnmounted  } from '@vue/composition-api';
+import { ref, computed, watchEffect, onMounted, onBeforeUnmount  } from '@vue/composition-api';
 import { useRangeFromOneToN } from '@/composables/useRangeFromOneToN';
 
 export default {
@@ -87,7 +87,7 @@ export default {
       });
     });
 
-    onUnmounted(() =>  {
+    onBeforeUnmount(() =>  {
       window.removeEventListener('resize', resizeListener);
     });
 
